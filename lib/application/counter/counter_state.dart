@@ -5,12 +5,12 @@ abstract class CounterState with _$CounterState {
   const factory CounterState({
     @required Counter counter,
     @required Counter loadedCounter,
-    @required State state,
+    @required ApplicationStatus state,
   }) = _CounterState;
 
   factory CounterState.initial() => CounterState(
         counter: Counter(0),
         loadedCounter: Counter(0),
-        state: State.NORMAL,
+        state: ApplicationStatus.normal(),
       );
 }

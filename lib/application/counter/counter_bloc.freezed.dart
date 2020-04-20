@@ -352,7 +352,7 @@ class _$CounterStateTearOff {
   _CounterState call(
       {@required Counter counter,
       @required Counter loadedCounter,
-      @required State state}) {
+      @required ApplicationStatus state}) {
     return _CounterState(
       counter: counter,
       loadedCounter: loadedCounter,
@@ -367,7 +367,7 @@ const $CounterState = _$CounterStateTearOff();
 mixin _$CounterState {
   Counter get counter;
   Counter get loadedCounter;
-  State get state;
+  ApplicationStatus get state;
 
   $CounterStateCopyWith<CounterState> get copyWith;
 }
@@ -376,7 +376,9 @@ abstract class $CounterStateCopyWith<$Res> {
   factory $CounterStateCopyWith(
           CounterState value, $Res Function(CounterState) then) =
       _$CounterStateCopyWithImpl<$Res>;
-  $Res call({Counter counter, Counter loadedCounter, State state});
+  $Res call({Counter counter, Counter loadedCounter, ApplicationStatus state});
+
+  $ApplicationStatusCopyWith<$Res> get state;
 }
 
 class _$CounterStateCopyWithImpl<$Res> implements $CounterStateCopyWith<$Res> {
@@ -397,8 +399,18 @@ class _$CounterStateCopyWithImpl<$Res> implements $CounterStateCopyWith<$Res> {
       loadedCounter: loadedCounter == freezed
           ? _value.loadedCounter
           : loadedCounter as Counter,
-      state: state == freezed ? _value.state : state as State,
+      state: state == freezed ? _value.state : state as ApplicationStatus,
     ));
+  }
+
+  @override
+  $ApplicationStatusCopyWith<$Res> get state {
+    if (_value.state == null) {
+      return null;
+    }
+    return $ApplicationStatusCopyWith<$Res>(_value.state, (value) {
+      return _then(_value.copyWith(state: value));
+    });
   }
 }
 
@@ -408,7 +420,10 @@ abstract class _$CounterStateCopyWith<$Res>
           _CounterState value, $Res Function(_CounterState) then) =
       __$CounterStateCopyWithImpl<$Res>;
   @override
-  $Res call({Counter counter, Counter loadedCounter, State state});
+  $Res call({Counter counter, Counter loadedCounter, ApplicationStatus state});
+
+  @override
+  $ApplicationStatusCopyWith<$Res> get state;
 }
 
 class __$CounterStateCopyWithImpl<$Res> extends _$CounterStateCopyWithImpl<$Res>
@@ -431,7 +446,7 @@ class __$CounterStateCopyWithImpl<$Res> extends _$CounterStateCopyWithImpl<$Res>
       loadedCounter: loadedCounter == freezed
           ? _value.loadedCounter
           : loadedCounter as Counter,
-      state: state == freezed ? _value.state : state as State,
+      state: state == freezed ? _value.state : state as ApplicationStatus,
     ));
   }
 }
@@ -450,7 +465,7 @@ class _$_CounterState implements _CounterState {
   @override
   final Counter loadedCounter;
   @override
-  final State state;
+  final ApplicationStatus state;
 
   @override
   String toString() {
@@ -487,14 +502,14 @@ abstract class _CounterState implements CounterState {
   const factory _CounterState(
       {@required Counter counter,
       @required Counter loadedCounter,
-      @required State state}) = _$_CounterState;
+      @required ApplicationStatus state}) = _$_CounterState;
 
   @override
   Counter get counter;
   @override
   Counter get loadedCounter;
   @override
-  State get state;
+  ApplicationStatus get state;
   @override
   _$CounterStateCopyWith<_CounterState> get copyWith;
 }

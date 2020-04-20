@@ -20,6 +20,7 @@ class CounterFacade implements ICounterFacade {
   }
 
   Future<Counter> load() async {
+    await Future.delayed(Duration(seconds: 3));
     return Counter(8);
   }
 }

@@ -3,7 +3,7 @@ import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
-import 'package:web_form/application/core/state.dart';
+import 'package:web_form/application/core/application_status.dart';
 import 'package:web_form/domain/counter/counter_value_objects.dart';
 import 'package:web_form/domain/counter/i_counter_facade.dart';
 
@@ -34,9 +34,10 @@ class CounterBloc extends Bloc<CounterEvent, CounterState> {
         yield state.copyWith(counter: newValue);
       },
       loadCounter: (e) async* {
-        yield state.copyWith(state: State.LOADING);
+        yield state.copyWith(state: ApplicationStatus.loading());
         var newValue = await _counterFacade.load();
-        yield state.copyWith(loadedCounter: newValue, state: State.NORMAL);
+        yield state.copyWith(
+            loadedCounter: newValue, state: ApplicationStatus.normal());
       },
     );
   }
