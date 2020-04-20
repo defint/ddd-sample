@@ -19,6 +19,10 @@ class _$CounterEventTearOff {
   Decrement decrement() {
     return const Decrement();
   }
+
+  LoadCounter loadCounter() {
+    return const LoadCounter();
+  }
 }
 
 // ignore: unused_element
@@ -29,22 +33,26 @@ mixin _$CounterEvent {
   Result when<Result extends Object>({
     @required Result increment(),
     @required Result decrement(),
+    @required Result loadCounter(),
   });
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
     Result increment(),
     Result decrement(),
+    Result loadCounter(),
     @required Result orElse(),
   });
   @optionalTypeArgs
   Result map<Result extends Object>({
     @required Result increment(Increment value),
     @required Result decrement(Decrement value),
+    @required Result loadCounter(LoadCounter value),
   });
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
     Result increment(Increment value),
     Result decrement(Decrement value),
+    Result loadCounter(LoadCounter value),
     @required Result orElse(),
   });
 }
@@ -98,9 +106,11 @@ class _$Increment implements Increment {
   Result when<Result extends Object>({
     @required Result increment(),
     @required Result decrement(),
+    @required Result loadCounter(),
   }) {
     assert(increment != null);
     assert(decrement != null);
+    assert(loadCounter != null);
     return increment();
   }
 
@@ -109,6 +119,7 @@ class _$Increment implements Increment {
   Result maybeWhen<Result extends Object>({
     Result increment(),
     Result decrement(),
+    Result loadCounter(),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -123,9 +134,11 @@ class _$Increment implements Increment {
   Result map<Result extends Object>({
     @required Result increment(Increment value),
     @required Result decrement(Decrement value),
+    @required Result loadCounter(LoadCounter value),
   }) {
     assert(increment != null);
     assert(decrement != null);
+    assert(loadCounter != null);
     return increment(this);
   }
 
@@ -134,6 +147,7 @@ class _$Increment implements Increment {
   Result maybeMap<Result extends Object>({
     Result increment(Increment value),
     Result decrement(Decrement value),
+    Result loadCounter(LoadCounter value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -183,9 +197,11 @@ class _$Decrement implements Decrement {
   Result when<Result extends Object>({
     @required Result increment(),
     @required Result decrement(),
+    @required Result loadCounter(),
   }) {
     assert(increment != null);
     assert(decrement != null);
+    assert(loadCounter != null);
     return decrement();
   }
 
@@ -194,6 +210,7 @@ class _$Decrement implements Decrement {
   Result maybeWhen<Result extends Object>({
     Result increment(),
     Result decrement(),
+    Result loadCounter(),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -208,9 +225,11 @@ class _$Decrement implements Decrement {
   Result map<Result extends Object>({
     @required Result increment(Increment value),
     @required Result decrement(Decrement value),
+    @required Result loadCounter(LoadCounter value),
   }) {
     assert(increment != null);
     assert(decrement != null);
+    assert(loadCounter != null);
     return decrement(this);
   }
 
@@ -219,6 +238,7 @@ class _$Decrement implements Decrement {
   Result maybeMap<Result extends Object>({
     Result increment(Increment value),
     Result decrement(Decrement value),
+    Result loadCounter(LoadCounter value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -233,12 +253,110 @@ abstract class Decrement implements CounterEvent {
   const factory Decrement() = _$Decrement;
 }
 
+abstract class $LoadCounterCopyWith<$Res> {
+  factory $LoadCounterCopyWith(
+          LoadCounter value, $Res Function(LoadCounter) then) =
+      _$LoadCounterCopyWithImpl<$Res>;
+}
+
+class _$LoadCounterCopyWithImpl<$Res> extends _$CounterEventCopyWithImpl<$Res>
+    implements $LoadCounterCopyWith<$Res> {
+  _$LoadCounterCopyWithImpl(
+      LoadCounter _value, $Res Function(LoadCounter) _then)
+      : super(_value, (v) => _then(v as LoadCounter));
+
+  @override
+  LoadCounter get _value => super._value as LoadCounter;
+}
+
+class _$LoadCounter implements LoadCounter {
+  const _$LoadCounter();
+
+  @override
+  String toString() {
+    return 'CounterEvent.loadCounter()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) || (other is LoadCounter);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  Result when<Result extends Object>({
+    @required Result increment(),
+    @required Result decrement(),
+    @required Result loadCounter(),
+  }) {
+    assert(increment != null);
+    assert(decrement != null);
+    assert(loadCounter != null);
+    return loadCounter();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>({
+    Result increment(),
+    Result decrement(),
+    Result loadCounter(),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (loadCounter != null) {
+      return loadCounter();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result map<Result extends Object>({
+    @required Result increment(Increment value),
+    @required Result decrement(Decrement value),
+    @required Result loadCounter(LoadCounter value),
+  }) {
+    assert(increment != null);
+    assert(decrement != null);
+    assert(loadCounter != null);
+    return loadCounter(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>({
+    Result increment(Increment value),
+    Result decrement(Decrement value),
+    Result loadCounter(LoadCounter value),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (loadCounter != null) {
+      return loadCounter(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class LoadCounter implements CounterEvent {
+  const factory LoadCounter() = _$LoadCounter;
+}
+
 class _$CounterStateTearOff {
   const _$CounterStateTearOff();
 
-  _CounterState call({@required Counter counter}) {
+  _CounterState call(
+      {@required Counter counter,
+      @required Counter loadedCounter,
+      @required State state}) {
     return _CounterState(
       counter: counter,
+      loadedCounter: loadedCounter,
+      state: state,
     );
   }
 }
@@ -248,6 +366,8 @@ const $CounterState = _$CounterStateTearOff();
 
 mixin _$CounterState {
   Counter get counter;
+  Counter get loadedCounter;
+  State get state;
 
   $CounterStateCopyWith<CounterState> get copyWith;
 }
@@ -256,7 +376,7 @@ abstract class $CounterStateCopyWith<$Res> {
   factory $CounterStateCopyWith(
           CounterState value, $Res Function(CounterState) then) =
       _$CounterStateCopyWithImpl<$Res>;
-  $Res call({Counter counter});
+  $Res call({Counter counter, Counter loadedCounter, State state});
 }
 
 class _$CounterStateCopyWithImpl<$Res> implements $CounterStateCopyWith<$Res> {
@@ -269,9 +389,15 @@ class _$CounterStateCopyWithImpl<$Res> implements $CounterStateCopyWith<$Res> {
   @override
   $Res call({
     Object counter = freezed,
+    Object loadedCounter = freezed,
+    Object state = freezed,
   }) {
     return _then(_value.copyWith(
       counter: counter == freezed ? _value.counter : counter as Counter,
+      loadedCounter: loadedCounter == freezed
+          ? _value.loadedCounter
+          : loadedCounter as Counter,
+      state: state == freezed ? _value.state : state as State,
     ));
   }
 }
@@ -282,7 +408,7 @@ abstract class _$CounterStateCopyWith<$Res>
           _CounterState value, $Res Function(_CounterState) then) =
       __$CounterStateCopyWithImpl<$Res>;
   @override
-  $Res call({Counter counter});
+  $Res call({Counter counter, Counter loadedCounter, State state});
 }
 
 class __$CounterStateCopyWithImpl<$Res> extends _$CounterStateCopyWithImpl<$Res>
@@ -297,22 +423,38 @@ class __$CounterStateCopyWithImpl<$Res> extends _$CounterStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object counter = freezed,
+    Object loadedCounter = freezed,
+    Object state = freezed,
   }) {
     return _then(_CounterState(
       counter: counter == freezed ? _value.counter : counter as Counter,
+      loadedCounter: loadedCounter == freezed
+          ? _value.loadedCounter
+          : loadedCounter as Counter,
+      state: state == freezed ? _value.state : state as State,
     ));
   }
 }
 
 class _$_CounterState implements _CounterState {
-  const _$_CounterState({@required this.counter}) : assert(counter != null);
+  const _$_CounterState(
+      {@required this.counter,
+      @required this.loadedCounter,
+      @required this.state})
+      : assert(counter != null),
+        assert(loadedCounter != null),
+        assert(state != null);
 
   @override
   final Counter counter;
+  @override
+  final Counter loadedCounter;
+  @override
+  final State state;
 
   @override
   String toString() {
-    return 'CounterState(counter: $counter)';
+    return 'CounterState(counter: $counter, loadedCounter: $loadedCounter, state: $state)';
   }
 
   @override
@@ -320,12 +462,21 @@ class _$_CounterState implements _CounterState {
     return identical(this, other) ||
         (other is _CounterState &&
             (identical(other.counter, counter) ||
-                const DeepCollectionEquality().equals(other.counter, counter)));
+                const DeepCollectionEquality()
+                    .equals(other.counter, counter)) &&
+            (identical(other.loadedCounter, loadedCounter) ||
+                const DeepCollectionEquality()
+                    .equals(other.loadedCounter, loadedCounter)) &&
+            (identical(other.state, state) ||
+                const DeepCollectionEquality().equals(other.state, state)));
   }
 
   @override
   int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(counter);
+      runtimeType.hashCode ^
+      const DeepCollectionEquality().hash(counter) ^
+      const DeepCollectionEquality().hash(loadedCounter) ^
+      const DeepCollectionEquality().hash(state);
 
   @override
   _$CounterStateCopyWith<_CounterState> get copyWith =>
@@ -333,10 +484,17 @@ class _$_CounterState implements _CounterState {
 }
 
 abstract class _CounterState implements CounterState {
-  const factory _CounterState({@required Counter counter}) = _$_CounterState;
+  const factory _CounterState(
+      {@required Counter counter,
+      @required Counter loadedCounter,
+      @required State state}) = _$_CounterState;
 
   @override
   Counter get counter;
+  @override
+  Counter get loadedCounter;
+  @override
+  State get state;
   @override
   _$CounterStateCopyWith<_CounterState> get copyWith;
 }

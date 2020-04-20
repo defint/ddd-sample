@@ -18,4 +18,8 @@ class CounterFacade implements ICounterFacade {
       (r) => Counter(r - 1),
     );
   }
+
+  Future<Counter> load() async {
+    return Counter(8);
+  }
 }

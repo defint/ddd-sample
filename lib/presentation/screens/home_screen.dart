@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_form_bloc/flutter_form_bloc.dart';
 import 'package:web_form/application/counter/counter_bloc.dart';
 import 'package:web_form/injection.dart';
+import 'package:web_form/presentation/routes/router.gr.dart';
 
 class HomeScreen extends StatelessWidget implements AutoRouteWrapper {
   @override
@@ -35,7 +36,14 @@ class HomeScreen extends StatelessWidget implements AutoRouteWrapper {
                           style: Theme.of(context).textTheme.headline4,
                         ));
               },
-            )
+            ),
+            RaisedButton(
+              onPressed: () {
+                ExtendedNavigator.rootNavigator
+                    .pushNamed(Routes.secondScreenRoute);
+              },
+              child: Text("Go to the second"),
+            ),
           ],
         ),
       ),

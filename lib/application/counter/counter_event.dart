@@ -4,4 +4,5 @@ part of 'counter_bloc.dart';
 abstract class CounterEvent with _$CounterEvent {
   const factory CounterEvent.increment() = Increment;
   const factory CounterEvent.decrement() = Decrement;
+  const factory CounterEvent.loadCounter() = LoadCounter;
 }

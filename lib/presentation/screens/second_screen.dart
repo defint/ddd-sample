@@ -1,21 +1,29 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:web_form/application/counter/counter_bloc.dart';
+import 'package:web_form/injection.dart';
 
-class SecondScreen extends StatefulWidget {
-  SecondScreen({Key key, this.title = "Second Screen"}) : super(key: key);
+class SecondScreen extends StatelessWidget {
+  Widget build(context) {
+    return BlocProvider(
+        create: (context) => getIt<CounterBloc>(), child: SecondScreenPage());
+  }
+}
+
+class SecondScreenPage extends StatefulWidget {
+  SecondScreenPage({Key key, this.title = "Second Screen"}) : super(key: key);
 
   final String title;
 
   @override
-  _SecondScreenState createState() => _SecondScreenState();
+  _SecondScreenPageState createState() => _SecondScreenPageState();
 }
 
-class _SecondScreenState extends State<SecondScreen> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
+class _SecondScreenPageState extends State<SecondScreenPage> {
+  @override
+  void initState() {
+    context.bloc<CounterBloc>()..add(CounterEvent.loadCounter());
+    super.initState();
   }
 
   @override
@@ -29,19 +37,20 @@ class _SecondScreenState extends State<SecondScreen> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Text(
-              'You have pushed the button this many times:',
+              'You have loaded counter:',
             ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headline4,
-            ),
+            BlocBuilder<CounterBloc, CounterState>(
+              builder: (context, state) {
+                return state.loadedCounter.value.fold(
+                    (l) => Text("error"),
+                    (r) => Text(
+                          '$r',
+                          style: Theme.of(context).textTheme.headline4,
+                        ));
+              },
+            )
           ],
         ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: Icon(Icons.add),
       ),
     );
   }

@@ -36,14 +36,8 @@ class Router extends RouterBase {
           settings: settings,
         );
       case Routes.secondScreenRoute:
-        if (hasInvalidArgs<SecondScreenArguments>(args)) {
-          return misTypedArgsRoute<SecondScreenArguments>(args);
-        }
-        final typedArgs =
-            args as SecondScreenArguments ?? SecondScreenArguments();
         return MaterialPageRoute<dynamic>(
-          builder: (_) =>
-              SecondScreen(key: typedArgs.key, title: typedArgs.title),
+          builder: (_) => SecondScreen(),
           settings: settings,
         );
       default:
@@ -61,11 +55,4 @@ class HomeScreenArguments {
   final Key key;
   final String title;
   HomeScreenArguments({this.key, this.title = "Home Screen"});
-}
-
-//SecondScreen arguments holder class
-class SecondScreenArguments {
-  final Key key;
-  final String title;
-  SecondScreenArguments({this.key, this.title = "Second Screen"});
 }
