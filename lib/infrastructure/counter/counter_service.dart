@@ -1,10 +1,15 @@
 import 'package:injectable/injectable.dart';
 import 'package:web_form/domain/counter/counter_value_objects.dart';
 import 'package:web_form/domain/counter/i_counter_service.dart';
+import 'package:web_form/infrastructure/counter/i_counter_repository.dart';
 
 @injectable
 @RegisterAs(ICounterService)
 class CounterService implements ICounterService {
+  final ICounterRepository _counterRepository;
+
+  CounterService(this._counterRepository);
+
   Future<Counter> increment(Counter counter) async {
     return counter.value.fold(
       (l) => Counter(0),
@@ -21,6 +26,6 @@ class CounterService implements ICounterService {
 
   Future<Counter> load() async {
     await Future.delayed(Duration(seconds: 3));
-    return Counter(8);
+    return _counterRepository.getCounter();
   }
 }
