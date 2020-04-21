@@ -23,6 +23,16 @@ class _$CounterEventTearOff {
   LoadCounter loadCounter() {
     return const LoadCounter();
   }
+
+  WatchCounter watchCounter() {
+    return const WatchCounter();
+  }
+
+  SetWatchCounter setWatchCounter(Counter counter) {
+    return SetWatchCounter(
+      counter,
+    );
+  }
 }
 
 // ignore: unused_element
@@ -34,12 +44,16 @@ mixin _$CounterEvent {
     @required Result increment(),
     @required Result decrement(),
     @required Result loadCounter(),
+    @required Result watchCounter(),
+    @required Result setWatchCounter(Counter counter),
   });
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
     Result increment(),
     Result decrement(),
     Result loadCounter(),
+    Result watchCounter(),
+    Result setWatchCounter(Counter counter),
     @required Result orElse(),
   });
   @optionalTypeArgs
@@ -47,12 +61,16 @@ mixin _$CounterEvent {
     @required Result increment(Increment value),
     @required Result decrement(Decrement value),
     @required Result loadCounter(LoadCounter value),
+    @required Result watchCounter(WatchCounter value),
+    @required Result setWatchCounter(SetWatchCounter value),
   });
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
     Result increment(Increment value),
     Result decrement(Decrement value),
     Result loadCounter(LoadCounter value),
+    Result watchCounter(WatchCounter value),
+    Result setWatchCounter(SetWatchCounter value),
     @required Result orElse(),
   });
 }
@@ -107,10 +125,14 @@ class _$Increment implements Increment {
     @required Result increment(),
     @required Result decrement(),
     @required Result loadCounter(),
+    @required Result watchCounter(),
+    @required Result setWatchCounter(Counter counter),
   }) {
     assert(increment != null);
     assert(decrement != null);
     assert(loadCounter != null);
+    assert(watchCounter != null);
+    assert(setWatchCounter != null);
     return increment();
   }
 
@@ -120,6 +142,8 @@ class _$Increment implements Increment {
     Result increment(),
     Result decrement(),
     Result loadCounter(),
+    Result watchCounter(),
+    Result setWatchCounter(Counter counter),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -135,10 +159,14 @@ class _$Increment implements Increment {
     @required Result increment(Increment value),
     @required Result decrement(Decrement value),
     @required Result loadCounter(LoadCounter value),
+    @required Result watchCounter(WatchCounter value),
+    @required Result setWatchCounter(SetWatchCounter value),
   }) {
     assert(increment != null);
     assert(decrement != null);
     assert(loadCounter != null);
+    assert(watchCounter != null);
+    assert(setWatchCounter != null);
     return increment(this);
   }
 
@@ -148,6 +176,8 @@ class _$Increment implements Increment {
     Result increment(Increment value),
     Result decrement(Decrement value),
     Result loadCounter(LoadCounter value),
+    Result watchCounter(WatchCounter value),
+    Result setWatchCounter(SetWatchCounter value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -198,10 +228,14 @@ class _$Decrement implements Decrement {
     @required Result increment(),
     @required Result decrement(),
     @required Result loadCounter(),
+    @required Result watchCounter(),
+    @required Result setWatchCounter(Counter counter),
   }) {
     assert(increment != null);
     assert(decrement != null);
     assert(loadCounter != null);
+    assert(watchCounter != null);
+    assert(setWatchCounter != null);
     return decrement();
   }
 
@@ -211,6 +245,8 @@ class _$Decrement implements Decrement {
     Result increment(),
     Result decrement(),
     Result loadCounter(),
+    Result watchCounter(),
+    Result setWatchCounter(Counter counter),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -226,10 +262,14 @@ class _$Decrement implements Decrement {
     @required Result increment(Increment value),
     @required Result decrement(Decrement value),
     @required Result loadCounter(LoadCounter value),
+    @required Result watchCounter(WatchCounter value),
+    @required Result setWatchCounter(SetWatchCounter value),
   }) {
     assert(increment != null);
     assert(decrement != null);
     assert(loadCounter != null);
+    assert(watchCounter != null);
+    assert(setWatchCounter != null);
     return decrement(this);
   }
 
@@ -239,6 +279,8 @@ class _$Decrement implements Decrement {
     Result increment(Increment value),
     Result decrement(Decrement value),
     Result loadCounter(LoadCounter value),
+    Result watchCounter(WatchCounter value),
+    Result setWatchCounter(SetWatchCounter value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -291,10 +333,14 @@ class _$LoadCounter implements LoadCounter {
     @required Result increment(),
     @required Result decrement(),
     @required Result loadCounter(),
+    @required Result watchCounter(),
+    @required Result setWatchCounter(Counter counter),
   }) {
     assert(increment != null);
     assert(decrement != null);
     assert(loadCounter != null);
+    assert(watchCounter != null);
+    assert(setWatchCounter != null);
     return loadCounter();
   }
 
@@ -304,6 +350,8 @@ class _$LoadCounter implements LoadCounter {
     Result increment(),
     Result decrement(),
     Result loadCounter(),
+    Result watchCounter(),
+    Result setWatchCounter(Counter counter),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -319,10 +367,14 @@ class _$LoadCounter implements LoadCounter {
     @required Result increment(Increment value),
     @required Result decrement(Decrement value),
     @required Result loadCounter(LoadCounter value),
+    @required Result watchCounter(WatchCounter value),
+    @required Result setWatchCounter(SetWatchCounter value),
   }) {
     assert(increment != null);
     assert(decrement != null);
     assert(loadCounter != null);
+    assert(watchCounter != null);
+    assert(setWatchCounter != null);
     return loadCounter(this);
   }
 
@@ -332,6 +384,8 @@ class _$LoadCounter implements LoadCounter {
     Result increment(Increment value),
     Result decrement(Decrement value),
     Result loadCounter(LoadCounter value),
+    Result watchCounter(WatchCounter value),
+    Result setWatchCounter(SetWatchCounter value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -346,16 +400,253 @@ abstract class LoadCounter implements CounterEvent {
   const factory LoadCounter() = _$LoadCounter;
 }
 
+abstract class $WatchCounterCopyWith<$Res> {
+  factory $WatchCounterCopyWith(
+          WatchCounter value, $Res Function(WatchCounter) then) =
+      _$WatchCounterCopyWithImpl<$Res>;
+}
+
+class _$WatchCounterCopyWithImpl<$Res> extends _$CounterEventCopyWithImpl<$Res>
+    implements $WatchCounterCopyWith<$Res> {
+  _$WatchCounterCopyWithImpl(
+      WatchCounter _value, $Res Function(WatchCounter) _then)
+      : super(_value, (v) => _then(v as WatchCounter));
+
+  @override
+  WatchCounter get _value => super._value as WatchCounter;
+}
+
+class _$WatchCounter implements WatchCounter {
+  const _$WatchCounter();
+
+  @override
+  String toString() {
+    return 'CounterEvent.watchCounter()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) || (other is WatchCounter);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  Result when<Result extends Object>({
+    @required Result increment(),
+    @required Result decrement(),
+    @required Result loadCounter(),
+    @required Result watchCounter(),
+    @required Result setWatchCounter(Counter counter),
+  }) {
+    assert(increment != null);
+    assert(decrement != null);
+    assert(loadCounter != null);
+    assert(watchCounter != null);
+    assert(setWatchCounter != null);
+    return watchCounter();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>({
+    Result increment(),
+    Result decrement(),
+    Result loadCounter(),
+    Result watchCounter(),
+    Result setWatchCounter(Counter counter),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (watchCounter != null) {
+      return watchCounter();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result map<Result extends Object>({
+    @required Result increment(Increment value),
+    @required Result decrement(Decrement value),
+    @required Result loadCounter(LoadCounter value),
+    @required Result watchCounter(WatchCounter value),
+    @required Result setWatchCounter(SetWatchCounter value),
+  }) {
+    assert(increment != null);
+    assert(decrement != null);
+    assert(loadCounter != null);
+    assert(watchCounter != null);
+    assert(setWatchCounter != null);
+    return watchCounter(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>({
+    Result increment(Increment value),
+    Result decrement(Decrement value),
+    Result loadCounter(LoadCounter value),
+    Result watchCounter(WatchCounter value),
+    Result setWatchCounter(SetWatchCounter value),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (watchCounter != null) {
+      return watchCounter(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class WatchCounter implements CounterEvent {
+  const factory WatchCounter() = _$WatchCounter;
+}
+
+abstract class $SetWatchCounterCopyWith<$Res> {
+  factory $SetWatchCounterCopyWith(
+          SetWatchCounter value, $Res Function(SetWatchCounter) then) =
+      _$SetWatchCounterCopyWithImpl<$Res>;
+  $Res call({Counter counter});
+}
+
+class _$SetWatchCounterCopyWithImpl<$Res>
+    extends _$CounterEventCopyWithImpl<$Res>
+    implements $SetWatchCounterCopyWith<$Res> {
+  _$SetWatchCounterCopyWithImpl(
+      SetWatchCounter _value, $Res Function(SetWatchCounter) _then)
+      : super(_value, (v) => _then(v as SetWatchCounter));
+
+  @override
+  SetWatchCounter get _value => super._value as SetWatchCounter;
+
+  @override
+  $Res call({
+    Object counter = freezed,
+  }) {
+    return _then(SetWatchCounter(
+      counter == freezed ? _value.counter : counter as Counter,
+    ));
+  }
+}
+
+class _$SetWatchCounter implements SetWatchCounter {
+  const _$SetWatchCounter(this.counter) : assert(counter != null);
+
+  @override
+  final Counter counter;
+
+  @override
+  String toString() {
+    return 'CounterEvent.setWatchCounter(counter: $counter)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is SetWatchCounter &&
+            (identical(other.counter, counter) ||
+                const DeepCollectionEquality().equals(other.counter, counter)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(counter);
+
+  @override
+  $SetWatchCounterCopyWith<SetWatchCounter> get copyWith =>
+      _$SetWatchCounterCopyWithImpl<SetWatchCounter>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  Result when<Result extends Object>({
+    @required Result increment(),
+    @required Result decrement(),
+    @required Result loadCounter(),
+    @required Result watchCounter(),
+    @required Result setWatchCounter(Counter counter),
+  }) {
+    assert(increment != null);
+    assert(decrement != null);
+    assert(loadCounter != null);
+    assert(watchCounter != null);
+    assert(setWatchCounter != null);
+    return setWatchCounter(counter);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>({
+    Result increment(),
+    Result decrement(),
+    Result loadCounter(),
+    Result watchCounter(),
+    Result setWatchCounter(Counter counter),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (setWatchCounter != null) {
+      return setWatchCounter(counter);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result map<Result extends Object>({
+    @required Result increment(Increment value),
+    @required Result decrement(Decrement value),
+    @required Result loadCounter(LoadCounter value),
+    @required Result watchCounter(WatchCounter value),
+    @required Result setWatchCounter(SetWatchCounter value),
+  }) {
+    assert(increment != null);
+    assert(decrement != null);
+    assert(loadCounter != null);
+    assert(watchCounter != null);
+    assert(setWatchCounter != null);
+    return setWatchCounter(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>({
+    Result increment(Increment value),
+    Result decrement(Decrement value),
+    Result loadCounter(LoadCounter value),
+    Result watchCounter(WatchCounter value),
+    Result setWatchCounter(SetWatchCounter value),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (setWatchCounter != null) {
+      return setWatchCounter(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class SetWatchCounter implements CounterEvent {
+  const factory SetWatchCounter(Counter counter) = _$SetWatchCounter;
+
+  Counter get counter;
+  $SetWatchCounterCopyWith<SetWatchCounter> get copyWith;
+}
+
 class _$CounterStateTearOff {
   const _$CounterStateTearOff();
 
   _CounterState call(
       {@required Counter counter,
       @required Counter loadedCounter,
+      @required Counter watchedCounter,
       @required ApplicationStatus state}) {
     return _CounterState(
       counter: counter,
       loadedCounter: loadedCounter,
+      watchedCounter: watchedCounter,
       state: state,
     );
   }
@@ -367,6 +658,7 @@ const $CounterState = _$CounterStateTearOff();
 mixin _$CounterState {
   Counter get counter;
   Counter get loadedCounter;
+  Counter get watchedCounter;
   ApplicationStatus get state;
 
   $CounterStateCopyWith<CounterState> get copyWith;
@@ -376,7 +668,11 @@ abstract class $CounterStateCopyWith<$Res> {
   factory $CounterStateCopyWith(
           CounterState value, $Res Function(CounterState) then) =
       _$CounterStateCopyWithImpl<$Res>;
-  $Res call({Counter counter, Counter loadedCounter, ApplicationStatus state});
+  $Res call(
+      {Counter counter,
+      Counter loadedCounter,
+      Counter watchedCounter,
+      ApplicationStatus state});
 
   $ApplicationStatusCopyWith<$Res> get state;
 }
@@ -392,6 +688,7 @@ class _$CounterStateCopyWithImpl<$Res> implements $CounterStateCopyWith<$Res> {
   $Res call({
     Object counter = freezed,
     Object loadedCounter = freezed,
+    Object watchedCounter = freezed,
     Object state = freezed,
   }) {
     return _then(_value.copyWith(
@@ -399,6 +696,9 @@ class _$CounterStateCopyWithImpl<$Res> implements $CounterStateCopyWith<$Res> {
       loadedCounter: loadedCounter == freezed
           ? _value.loadedCounter
           : loadedCounter as Counter,
+      watchedCounter: watchedCounter == freezed
+          ? _value.watchedCounter
+          : watchedCounter as Counter,
       state: state == freezed ? _value.state : state as ApplicationStatus,
     ));
   }
@@ -420,7 +720,11 @@ abstract class _$CounterStateCopyWith<$Res>
           _CounterState value, $Res Function(_CounterState) then) =
       __$CounterStateCopyWithImpl<$Res>;
   @override
-  $Res call({Counter counter, Counter loadedCounter, ApplicationStatus state});
+  $Res call(
+      {Counter counter,
+      Counter loadedCounter,
+      Counter watchedCounter,
+      ApplicationStatus state});
 
   @override
   $ApplicationStatusCopyWith<$Res> get state;
@@ -439,6 +743,7 @@ class __$CounterStateCopyWithImpl<$Res> extends _$CounterStateCopyWithImpl<$Res>
   $Res call({
     Object counter = freezed,
     Object loadedCounter = freezed,
+    Object watchedCounter = freezed,
     Object state = freezed,
   }) {
     return _then(_CounterState(
@@ -446,6 +751,9 @@ class __$CounterStateCopyWithImpl<$Res> extends _$CounterStateCopyWithImpl<$Res>
       loadedCounter: loadedCounter == freezed
           ? _value.loadedCounter
           : loadedCounter as Counter,
+      watchedCounter: watchedCounter == freezed
+          ? _value.watchedCounter
+          : watchedCounter as Counter,
       state: state == freezed ? _value.state : state as ApplicationStatus,
     ));
   }
@@ -455,9 +763,11 @@ class _$_CounterState implements _CounterState {
   const _$_CounterState(
       {@required this.counter,
       @required this.loadedCounter,
+      @required this.watchedCounter,
       @required this.state})
       : assert(counter != null),
         assert(loadedCounter != null),
+        assert(watchedCounter != null),
         assert(state != null);
 
   @override
@@ -465,11 +775,13 @@ class _$_CounterState implements _CounterState {
   @override
   final Counter loadedCounter;
   @override
+  final Counter watchedCounter;
+  @override
   final ApplicationStatus state;
 
   @override
   String toString() {
-    return 'CounterState(counter: $counter, loadedCounter: $loadedCounter, state: $state)';
+    return 'CounterState(counter: $counter, loadedCounter: $loadedCounter, watchedCounter: $watchedCounter, state: $state)';
   }
 
   @override
@@ -482,6 +794,9 @@ class _$_CounterState implements _CounterState {
             (identical(other.loadedCounter, loadedCounter) ||
                 const DeepCollectionEquality()
                     .equals(other.loadedCounter, loadedCounter)) &&
+            (identical(other.watchedCounter, watchedCounter) ||
+                const DeepCollectionEquality()
+                    .equals(other.watchedCounter, watchedCounter)) &&
             (identical(other.state, state) ||
                 const DeepCollectionEquality().equals(other.state, state)));
   }
@@ -491,6 +806,7 @@ class _$_CounterState implements _CounterState {
       runtimeType.hashCode ^
       const DeepCollectionEquality().hash(counter) ^
       const DeepCollectionEquality().hash(loadedCounter) ^
+      const DeepCollectionEquality().hash(watchedCounter) ^
       const DeepCollectionEquality().hash(state);
 
   @override
@@ -502,12 +818,15 @@ abstract class _CounterState implements CounterState {
   const factory _CounterState(
       {@required Counter counter,
       @required Counter loadedCounter,
+      @required Counter watchedCounter,
       @required ApplicationStatus state}) = _$_CounterState;
 
   @override
   Counter get counter;
   @override
   Counter get loadedCounter;
+  @override
+  Counter get watchedCounter;
   @override
   ApplicationStatus get state;
   @override

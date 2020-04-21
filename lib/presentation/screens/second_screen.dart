@@ -22,7 +22,9 @@ class SecondScreenPage extends StatefulWidget {
 class _SecondScreenPageState extends State<SecondScreenPage> {
   @override
   void initState() {
-    context.bloc<CounterBloc>()..add(CounterEvent.loadCounter());
+    var bloc = context.bloc<CounterBloc>();
+    bloc.add(CounterEvent.loadCounter());
+    bloc.add(CounterEvent.watchCounter());
     super.initState();
   }
 
@@ -49,6 +51,14 @@ class _SecondScreenPageState extends State<SecondScreenPage> {
                               style: Theme.of(context).textTheme.headline4,
                             )),
                     loading: (_) => Text("LOADING..."));
+              },
+            ),
+            BlocBuilder<CounterBloc, CounterState>(
+              builder: (context, state) {
+                return Text(
+                  '${state.watchedCounter.value.getOrElse(() => 0)}',
+                  style: Theme.of(context).textTheme.headline4,
+                );
               },
             )
           ],

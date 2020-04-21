@@ -17,6 +17,8 @@ class CounterBloc extends Bloc<CounterEvent, CounterState> {
 
   CounterBloc(this._counterService);
 
+  StreamSubscription<Counter> _streamSubscription;
+
   @override
   CounterState get initialState => CounterState.initial();
 
@@ -38,6 +40,15 @@ class CounterBloc extends Bloc<CounterEvent, CounterState> {
         var newValue = await _counterService.load();
         yield state.copyWith(
             loadedCounter: newValue, state: ApplicationStatus.normal());
+      },
+      setWatchCounter: (e) async* {
+        yield state.copyWith(watchedCounter: e.counter);
+      },
+      watchCounter: (e) async* {
+        await _streamSubscription?.cancel();
+        _streamSubscription = _counterService.watch().listen((counter) {
+          add(CounterEvent.setWatchCounter(counter));
+        });
       },
     );
   }

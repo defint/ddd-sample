@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:injectable/injectable.dart';
 import 'package:web_form/domain/counter/counter_value_objects.dart';
 import 'package:web_form/domain/counter/i_counter_service.dart';
@@ -27,5 +29,11 @@ class CounterService implements ICounterService {
   Future<Counter> load() async {
     await Future.delayed(Duration(seconds: 3));
     return _counterRepository.getCounter();
+  }
+
+  Stream<Counter> watch() async* {
+    await Future.delayed(Duration(seconds: 1));
+    yield Counter(new Random().nextInt(100));
+    yield* watch();
   }
 }
