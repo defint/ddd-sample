@@ -5,7 +5,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 import 'package:web_form/application/core/application_status.dart';
 import 'package:web_form/domain/counter/counter_value_objects.dart';
-import 'package:web_form/domain/counter/i_counter_repository.dart';
+import 'package:web_form/domain/counter/i_counter_service.dart';
 
 part 'counter_bloc.freezed.dart';
 part 'counter_event.dart';
@@ -13,9 +13,9 @@ part 'counter_state.dart';
 
 @injectable
 class CounterBloc extends Bloc<CounterEvent, CounterState> {
-  final ICounterRepository _counterFacade;
+  final ICounterService _counterService;
 
-  CounterBloc(this._counterFacade);
+  CounterBloc(this._counterService);
 
   @override
   CounterState get initialState => CounterState.initial();
@@ -26,16 +26,16 @@ class CounterBloc extends Bloc<CounterEvent, CounterState> {
   ) async* {
     yield* event.map(
       increment: (e) async* {
-        var newValue = await _counterFacade.increment(state.counter);
+        var newValue = await _counterService.increment(state.counter);
         yield state.copyWith(counter: newValue);
       },
       decrement: (e) async* {
-        var newValue = await _counterFacade.decrement(state.counter);
+        var newValue = await _counterService.decrement(state.counter);
         yield state.copyWith(counter: newValue);
       },
       loadCounter: (e) async* {
         yield state.copyWith(state: ApplicationStatus.loading());
-        var newValue = await _counterFacade.load();
+        var newValue = await _counterService.load();
         yield state.copyWith(
             loadedCounter: newValue, state: ApplicationStatus.normal());
       },
