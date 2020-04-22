@@ -22,6 +22,11 @@ void $initGetIt(GetIt g, {String environment}) {
     g.registerFactory<ICounterRepository>(() => CounterMockRepository());
   }
 
+  //Register test Dependencies --------
+  if (environment == 'test') {
+    g.registerFactory<ICounterRepository>(() => CounterMockTestRepository());
+  }
+
   //Register prod Dependencies --------
   if (environment == 'prod') {
     g.registerFactory<ICounterRepository>(() => CounterBackendRepository());

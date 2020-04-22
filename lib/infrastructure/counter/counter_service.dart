@@ -27,7 +27,7 @@ class CounterService implements ICounterService {
   }
 
   Future<Counter> load() async {
-    await Future.delayed(Duration(seconds: 3));
+    await Future.delayed(Duration(seconds: 1));
     return _counterRepository.getCounter();
   }
 

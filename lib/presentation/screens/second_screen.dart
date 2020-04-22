@@ -22,9 +22,9 @@ class SecondScreenPage extends StatefulWidget {
 class _SecondScreenPageState extends State<SecondScreenPage> {
   @override
   void initState() {
-    var bloc = context.bloc<CounterBloc>();
-    bloc.add(CounterEvent.loadCounter());
-    bloc.add(CounterEvent.watchCounter());
+    context.bloc<CounterBloc>()
+      ..add(CounterEvent.loadCounter())
+      ..add(CounterEvent.watchCounter());
     super.initState();
   }
 

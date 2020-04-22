@@ -10,3 +10,12 @@ class CounterMockRepository implements ICounterRepository {
     return Counter(8);
   }
 }
+
+@injectable
+@test
+@RegisterAs(ICounterRepository)
+class CounterMockTestRepository implements ICounterRepository {
+  Future<Counter> getCounter() async {
+    return Counter(89);
+  }
+}
