@@ -50,13 +50,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "3.0.0"
-  bloc_test:
-    dependency: transitive
-    description:
-      name: bloc_test
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "4.0.0"
   boolean_selector:
     dependency: transitive
     description:
@@ -204,13 +197,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.8.9"
-  equatable:
-    dependency: transitive
-    description:
-      name: equatable
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "1.1.1"
   fake_async:
     dependency: transitive
     description:
@@ -237,25 +223,11 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "3.2.0"
-  flutter_form_bloc:
-    dependency: "direct main"
-    description:
-      name: flutter_form_bloc
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "0.12.2"
   flutter_test:
     dependency: "direct dev"
     description: flutter
     source: sdk
     version: "0.0.0"
-  form_bloc:
-    dependency: transitive
-    description:
-      name: form_bloc
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "0.12.0"
   freezed:
     dependency: "direct dev"
     description:
@@ -333,13 +305,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.3.4"
-  intl:
-    dependency: transitive
-    description:
-      name: intl
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "0.16.1"
   io:
     dependency: transitive
     description:
@@ -368,13 +333,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "3.3.0"
-  keyboard_utils:
-    dependency: transitive
-    description:
-      name: keyboard_utils
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "1.2.0"
   lint:
     dependency: "direct dev"
     description:
@@ -410,13 +368,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.9.6+3"
-  mockito:
-    dependency: transitive
-    description:
-      name: mockito
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "4.1.1"
   multi_server_socket:
     dependency: transitive
     description:
@@ -653,13 +604,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.1.6"
-  uuid:
-    dependency: transitive
-    description:
-      name: uuid
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "2.0.4"
   vector_math:
     dependency: transitive
     description:

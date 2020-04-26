@@ -4,6 +4,7 @@
 // InjectableConfigGenerator
 // **************************************************************************
 
+import 'package:web_form/application/form/form_bloc.dart';
 import 'package:web_form/infrastructure/counter/counter_mock_repository.dart';
 import 'package:web_form/infrastructure/counter/i_counter_repository.dart';
 import 'package:web_form/infrastructure/counter/counter_backend_repository.dart';
@@ -13,6 +14,7 @@ import 'package:web_form/application/counter/counter_bloc.dart';
 import 'package:get_it/get_it.dart';
 
 void $initGetIt(GetIt g, {String environment}) {
+  g.registerFactory<FormBloc>(() => FormBloc());
   g.registerFactory<ICounterService>(
       () => CounterService(g<ICounterRepository>()));
   g.registerFactory<CounterBloc>(() => CounterBloc(g<ICounterService>()));

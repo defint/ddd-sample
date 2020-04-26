@@ -25,3 +25,22 @@ class ValidatorPositiveNumber implements IValidator<int> {
     return option(value < 0, ValueFailure.positiveNumber(failedValue: value));
   }
 }
+
+class ValidatorEmptyString implements IValidator<String> {
+  @override
+  Option<ValueFailure<String>> validate(String value) {
+    return option(value == '', ValueFailure.emptyString(failedValue: value));
+  }
+}
+
+class ValidatorLengthMax implements IValidator<String> {
+  final int length;
+
+  ValidatorLengthMax({this.length});
+
+  @override
+  Option<ValueFailure<String>> validate(String value) {
+    return option(value.length > length,
+        ValueFailure.lengthMax(failedValue: value, length: length));
+  }
+}

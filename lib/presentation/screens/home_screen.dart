@@ -1,6 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_form_bloc/flutter_form_bloc.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:web_form/application/counter/counter_bloc.dart';
 import 'package:web_form/injection.dart';
 import 'package:web_form/presentation/routes/router.gr.dart';
@@ -43,6 +43,13 @@ class HomeScreen extends StatelessWidget implements AutoRouteWrapper {
                     .pushNamed(Routes.secondScreenRoute);
               },
               child: Text("Go to the second"),
+            ),
+            RaisedButton(
+              onPressed: () {
+                ExtendedNavigator.rootNavigator
+                    .pushNamed(Routes.formScreenRoute);
+              },
+              child: Text("Go to the form"),
             ),
           ],
         ),
