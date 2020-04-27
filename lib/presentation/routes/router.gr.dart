@@ -9,7 +9,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:web_form/presentation/screens/home_screen.dart';
 import 'package:web_form/presentation/screens/second_screen.dart';
-import 'package:web_form/presentation/screens/form_screen.dart';
+import 'package:web_form/presentation/screens/form_screen/form_screen.dart';
+import 'package:web_form/domain/counter/counter_value_objects.dart';
 
 abstract class Routes {
   static const homeScreenRoute = '/';
@@ -48,7 +49,10 @@ class Router extends RouterBase {
         }
         final typedArgs = args as FormScreenArguments ?? FormScreenArguments();
         return MaterialPageRoute<dynamic>(
-          builder: (_) => FormScreen(key: typedArgs.key, title: typedArgs.title)
+          builder: (_) => FormScreen(
+                  key: typedArgs.key,
+                  initialValue: typedArgs.initialValue,
+                  title: typedArgs.title)
               .wrappedRoute,
           settings: settings,
         );
@@ -72,6 +76,8 @@ class HomeScreenArguments {
 //FormScreen arguments holder class
 class FormScreenArguments {
   final Key key;
+  final Counter initialValue;
   final String title;
-  FormScreenArguments({this.key, this.title = "Form Screen"});
+  FormScreenArguments(
+      {this.key, this.initialValue, this.title = "Form Screen"});
 }

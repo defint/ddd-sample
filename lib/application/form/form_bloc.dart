@@ -19,10 +19,23 @@ class FormBloc extends Bloc<FormBlocEvent, FormBlocState> {
     FormBlocEvent event,
   ) async* {
     yield* event.map(
-      changeName: (e) async* {
-        yield state.copyWith(name: Name(e.name));
+      initialized: (e) async* {
+        add(FormBlocEvent.changeName(
+            e.counter.value.getOrElse(() => 0).toString()));
       },
-      submit: null,
+      changeName: (e) async* {
+        yield state.copyWith(
+          name: Name(e.name),
+          doubledName: Name("${e.name}${e.name}"),
+        );
+      },
+      changeDoubledName: (e) async* {
+        yield state.copyWith(doubledName: Name(e.doubledName));
+      },
+      submit: (e) async* {
+        // TODO
+        yield state.copyWith(name: Name("aaa"));
+      },
     );
   }
 }

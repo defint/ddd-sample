@@ -12,9 +12,21 @@ T _$identity<T>(T value) => value;
 class _$FormBlocEventTearOff {
   const _$FormBlocEventTearOff();
 
+  Initialized initialized(Counter counter) {
+    return Initialized(
+      counter,
+    );
+  }
+
   ChangeName changeName(String name) {
     return ChangeName(
       name,
+    );
+  }
+
+  ChangeDoubledName changeDoubledName(String doubledName) {
+    return ChangeDoubledName(
+      doubledName,
     );
   }
 
@@ -29,23 +41,31 @@ const $FormBlocEvent = _$FormBlocEventTearOff();
 mixin _$FormBlocEvent {
   @optionalTypeArgs
   Result when<Result extends Object>({
+    @required Result initialized(Counter counter),
     @required Result changeName(String name),
+    @required Result changeDoubledName(String doubledName),
     @required Result submit(),
   });
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
+    Result initialized(Counter counter),
     Result changeName(String name),
+    Result changeDoubledName(String doubledName),
     Result submit(),
     @required Result orElse(),
   });
   @optionalTypeArgs
   Result map<Result extends Object>({
+    @required Result initialized(Initialized value),
     @required Result changeName(ChangeName value),
+    @required Result changeDoubledName(ChangeDoubledName value),
     @required Result submit(Submit value),
   });
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
+    Result initialized(Initialized value),
     Result changeName(ChangeName value),
+    Result changeDoubledName(ChangeDoubledName value),
     Result submit(Submit value),
     @required Result orElse(),
   });
@@ -64,6 +84,129 @@ class _$FormBlocEventCopyWithImpl<$Res>
   final FormBlocEvent _value;
   // ignore: unused_field
   final $Res Function(FormBlocEvent) _then;
+}
+
+abstract class $InitializedCopyWith<$Res> {
+  factory $InitializedCopyWith(
+          Initialized value, $Res Function(Initialized) then) =
+      _$InitializedCopyWithImpl<$Res>;
+  $Res call({Counter counter});
+}
+
+class _$InitializedCopyWithImpl<$Res> extends _$FormBlocEventCopyWithImpl<$Res>
+    implements $InitializedCopyWith<$Res> {
+  _$InitializedCopyWithImpl(
+      Initialized _value, $Res Function(Initialized) _then)
+      : super(_value, (v) => _then(v as Initialized));
+
+  @override
+  Initialized get _value => super._value as Initialized;
+
+  @override
+  $Res call({
+    Object counter = freezed,
+  }) {
+    return _then(Initialized(
+      counter == freezed ? _value.counter : counter as Counter,
+    ));
+  }
+}
+
+class _$Initialized implements Initialized {
+  const _$Initialized(this.counter) : assert(counter != null);
+
+  @override
+  final Counter counter;
+
+  @override
+  String toString() {
+    return 'FormBlocEvent.initialized(counter: $counter)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is Initialized &&
+            (identical(other.counter, counter) ||
+                const DeepCollectionEquality().equals(other.counter, counter)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(counter);
+
+  @override
+  $InitializedCopyWith<Initialized> get copyWith =>
+      _$InitializedCopyWithImpl<Initialized>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  Result when<Result extends Object>({
+    @required Result initialized(Counter counter),
+    @required Result changeName(String name),
+    @required Result changeDoubledName(String doubledName),
+    @required Result submit(),
+  }) {
+    assert(initialized != null);
+    assert(changeName != null);
+    assert(changeDoubledName != null);
+    assert(submit != null);
+    return initialized(counter);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>({
+    Result initialized(Counter counter),
+    Result changeName(String name),
+    Result changeDoubledName(String doubledName),
+    Result submit(),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (initialized != null) {
+      return initialized(counter);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result map<Result extends Object>({
+    @required Result initialized(Initialized value),
+    @required Result changeName(ChangeName value),
+    @required Result changeDoubledName(ChangeDoubledName value),
+    @required Result submit(Submit value),
+  }) {
+    assert(initialized != null);
+    assert(changeName != null);
+    assert(changeDoubledName != null);
+    assert(submit != null);
+    return initialized(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>({
+    Result initialized(Initialized value),
+    Result changeName(ChangeName value),
+    Result changeDoubledName(ChangeDoubledName value),
+    Result submit(Submit value),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (initialized != null) {
+      return initialized(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class Initialized implements FormBlocEvent {
+  const factory Initialized(Counter counter) = _$Initialized;
+
+  Counter get counter;
+  $InitializedCopyWith<Initialized> get copyWith;
 }
 
 abstract class $ChangeNameCopyWith<$Res> {
@@ -121,10 +264,14 @@ class _$ChangeName implements ChangeName {
   @override
   @optionalTypeArgs
   Result when<Result extends Object>({
+    @required Result initialized(Counter counter),
     @required Result changeName(String name),
+    @required Result changeDoubledName(String doubledName),
     @required Result submit(),
   }) {
+    assert(initialized != null);
     assert(changeName != null);
+    assert(changeDoubledName != null);
     assert(submit != null);
     return changeName(name);
   }
@@ -132,7 +279,9 @@ class _$ChangeName implements ChangeName {
   @override
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
+    Result initialized(Counter counter),
     Result changeName(String name),
+    Result changeDoubledName(String doubledName),
     Result submit(),
     @required Result orElse(),
   }) {
@@ -146,10 +295,14 @@ class _$ChangeName implements ChangeName {
   @override
   @optionalTypeArgs
   Result map<Result extends Object>({
+    @required Result initialized(Initialized value),
     @required Result changeName(ChangeName value),
+    @required Result changeDoubledName(ChangeDoubledName value),
     @required Result submit(Submit value),
   }) {
+    assert(initialized != null);
     assert(changeName != null);
+    assert(changeDoubledName != null);
     assert(submit != null);
     return changeName(this);
   }
@@ -157,7 +310,9 @@ class _$ChangeName implements ChangeName {
   @override
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
+    Result initialized(Initialized value),
     Result changeName(ChangeName value),
+    Result changeDoubledName(ChangeDoubledName value),
     Result submit(Submit value),
     @required Result orElse(),
   }) {
@@ -174,6 +329,131 @@ abstract class ChangeName implements FormBlocEvent {
 
   String get name;
   $ChangeNameCopyWith<ChangeName> get copyWith;
+}
+
+abstract class $ChangeDoubledNameCopyWith<$Res> {
+  factory $ChangeDoubledNameCopyWith(
+          ChangeDoubledName value, $Res Function(ChangeDoubledName) then) =
+      _$ChangeDoubledNameCopyWithImpl<$Res>;
+  $Res call({String doubledName});
+}
+
+class _$ChangeDoubledNameCopyWithImpl<$Res>
+    extends _$FormBlocEventCopyWithImpl<$Res>
+    implements $ChangeDoubledNameCopyWith<$Res> {
+  _$ChangeDoubledNameCopyWithImpl(
+      ChangeDoubledName _value, $Res Function(ChangeDoubledName) _then)
+      : super(_value, (v) => _then(v as ChangeDoubledName));
+
+  @override
+  ChangeDoubledName get _value => super._value as ChangeDoubledName;
+
+  @override
+  $Res call({
+    Object doubledName = freezed,
+  }) {
+    return _then(ChangeDoubledName(
+      doubledName == freezed ? _value.doubledName : doubledName as String,
+    ));
+  }
+}
+
+class _$ChangeDoubledName implements ChangeDoubledName {
+  const _$ChangeDoubledName(this.doubledName) : assert(doubledName != null);
+
+  @override
+  final String doubledName;
+
+  @override
+  String toString() {
+    return 'FormBlocEvent.changeDoubledName(doubledName: $doubledName)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is ChangeDoubledName &&
+            (identical(other.doubledName, doubledName) ||
+                const DeepCollectionEquality()
+                    .equals(other.doubledName, doubledName)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(doubledName);
+
+  @override
+  $ChangeDoubledNameCopyWith<ChangeDoubledName> get copyWith =>
+      _$ChangeDoubledNameCopyWithImpl<ChangeDoubledName>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  Result when<Result extends Object>({
+    @required Result initialized(Counter counter),
+    @required Result changeName(String name),
+    @required Result changeDoubledName(String doubledName),
+    @required Result submit(),
+  }) {
+    assert(initialized != null);
+    assert(changeName != null);
+    assert(changeDoubledName != null);
+    assert(submit != null);
+    return changeDoubledName(doubledName);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>({
+    Result initialized(Counter counter),
+    Result changeName(String name),
+    Result changeDoubledName(String doubledName),
+    Result submit(),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (changeDoubledName != null) {
+      return changeDoubledName(doubledName);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result map<Result extends Object>({
+    @required Result initialized(Initialized value),
+    @required Result changeName(ChangeName value),
+    @required Result changeDoubledName(ChangeDoubledName value),
+    @required Result submit(Submit value),
+  }) {
+    assert(initialized != null);
+    assert(changeName != null);
+    assert(changeDoubledName != null);
+    assert(submit != null);
+    return changeDoubledName(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>({
+    Result initialized(Initialized value),
+    Result changeName(ChangeName value),
+    Result changeDoubledName(ChangeDoubledName value),
+    Result submit(Submit value),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (changeDoubledName != null) {
+      return changeDoubledName(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class ChangeDoubledName implements FormBlocEvent {
+  const factory ChangeDoubledName(String doubledName) = _$ChangeDoubledName;
+
+  String get doubledName;
+  $ChangeDoubledNameCopyWith<ChangeDoubledName> get copyWith;
 }
 
 abstract class $SubmitCopyWith<$Res> {
@@ -209,10 +489,14 @@ class _$Submit implements Submit {
   @override
   @optionalTypeArgs
   Result when<Result extends Object>({
+    @required Result initialized(Counter counter),
     @required Result changeName(String name),
+    @required Result changeDoubledName(String doubledName),
     @required Result submit(),
   }) {
+    assert(initialized != null);
     assert(changeName != null);
+    assert(changeDoubledName != null);
     assert(submit != null);
     return submit();
   }
@@ -220,7 +504,9 @@ class _$Submit implements Submit {
   @override
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
+    Result initialized(Counter counter),
     Result changeName(String name),
+    Result changeDoubledName(String doubledName),
     Result submit(),
     @required Result orElse(),
   }) {
@@ -234,10 +520,14 @@ class _$Submit implements Submit {
   @override
   @optionalTypeArgs
   Result map<Result extends Object>({
+    @required Result initialized(Initialized value),
     @required Result changeName(ChangeName value),
+    @required Result changeDoubledName(ChangeDoubledName value),
     @required Result submit(Submit value),
   }) {
+    assert(initialized != null);
     assert(changeName != null);
+    assert(changeDoubledName != null);
     assert(submit != null);
     return submit(this);
   }
@@ -245,7 +535,9 @@ class _$Submit implements Submit {
   @override
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
+    Result initialized(Initialized value),
     Result changeName(ChangeName value),
+    Result changeDoubledName(ChangeDoubledName value),
     Result submit(Submit value),
     @required Result orElse(),
   }) {
@@ -264,9 +556,10 @@ abstract class Submit implements FormBlocEvent {
 class _$FormBlocStateTearOff {
   const _$FormBlocStateTearOff();
 
-  _FormState call({@required Name name}) {
+  _FormState call({@required Name name, @required Name doubledName}) {
     return _FormState(
       name: name,
+      doubledName: doubledName,
     );
   }
 }
@@ -276,6 +569,7 @@ const $FormBlocState = _$FormBlocStateTearOff();
 
 mixin _$FormBlocState {
   Name get name;
+  Name get doubledName;
 
   $FormBlocStateCopyWith<FormBlocState> get copyWith;
 }
@@ -284,7 +578,7 @@ abstract class $FormBlocStateCopyWith<$Res> {
   factory $FormBlocStateCopyWith(
           FormBlocState value, $Res Function(FormBlocState) then) =
       _$FormBlocStateCopyWithImpl<$Res>;
-  $Res call({Name name});
+  $Res call({Name name, Name doubledName});
 }
 
 class _$FormBlocStateCopyWithImpl<$Res>
@@ -298,9 +592,12 @@ class _$FormBlocStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object name = freezed,
+    Object doubledName = freezed,
   }) {
     return _then(_value.copyWith(
       name: name == freezed ? _value.name : name as Name,
+      doubledName:
+          doubledName == freezed ? _value.doubledName : doubledName as Name,
     ));
   }
 }
@@ -311,7 +608,7 @@ abstract class _$FormStateCopyWith<$Res>
           _FormState value, $Res Function(_FormState) then) =
       __$FormStateCopyWithImpl<$Res>;
   @override
-  $Res call({Name name});
+  $Res call({Name name, Name doubledName});
 }
 
 class __$FormStateCopyWithImpl<$Res> extends _$FormBlocStateCopyWithImpl<$Res>
@@ -325,22 +622,29 @@ class __$FormStateCopyWithImpl<$Res> extends _$FormBlocStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object name = freezed,
+    Object doubledName = freezed,
   }) {
     return _then(_FormState(
       name: name == freezed ? _value.name : name as Name,
+      doubledName:
+          doubledName == freezed ? _value.doubledName : doubledName as Name,
     ));
   }
 }
 
 class _$_FormState implements _FormState {
-  const _$_FormState({@required this.name}) : assert(name != null);
+  const _$_FormState({@required this.name, @required this.doubledName})
+      : assert(name != null),
+        assert(doubledName != null);
 
   @override
   final Name name;
+  @override
+  final Name doubledName;
 
   @override
   String toString() {
-    return 'FormBlocState(name: $name)';
+    return 'FormBlocState(name: $name, doubledName: $doubledName)';
   }
 
   @override
@@ -348,12 +652,17 @@ class _$_FormState implements _FormState {
     return identical(this, other) ||
         (other is _FormState &&
             (identical(other.name, name) ||
-                const DeepCollectionEquality().equals(other.name, name)));
+                const DeepCollectionEquality().equals(other.name, name)) &&
+            (identical(other.doubledName, doubledName) ||
+                const DeepCollectionEquality()
+                    .equals(other.doubledName, doubledName)));
   }
 
   @override
   int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(name);
+      runtimeType.hashCode ^
+      const DeepCollectionEquality().hash(name) ^
+      const DeepCollectionEquality().hash(doubledName);
 
   @override
   _$FormStateCopyWith<_FormState> get copyWith =>
@@ -361,10 +670,13 @@ class _$_FormState implements _FormState {
 }
 
 abstract class _FormState implements FormBlocState {
-  const factory _FormState({@required Name name}) = _$_FormState;
+  const factory _FormState({@required Name name, @required Name doubledName}) =
+      _$_FormState;
 
   @override
   Name get name;
+  @override
+  Name get doubledName;
   @override
   _$FormStateCopyWith<_FormState> get copyWith;
 }

@@ -46,8 +46,11 @@ class HomeScreen extends StatelessWidget implements AutoRouteWrapper {
             ),
             RaisedButton(
               onPressed: () {
-                ExtendedNavigator.rootNavigator
-                    .pushNamed(Routes.formScreenRoute);
+                ExtendedNavigator.rootNavigator.pushNamed(
+                    Routes.formScreenRoute,
+                    arguments: FormScreenArguments(
+                        initialValue:
+                            context.bloc<CounterBloc>().state.counter));
               },
               child: Text("Go to the form"),
             ),
