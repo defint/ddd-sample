@@ -37,6 +37,8 @@ class AnotherField extends HookWidget {
                         (f) => f.maybeMap(
                           emptyString: (_) => 'Required field',
                           lengthMax: (error) => 'Max length: ${error.length}',
+                          notEqual: (error) =>
+                              'Field should not be equal to `${error.checker}`',
                           orElse: () => null,
                         ),
                         (_) => null,

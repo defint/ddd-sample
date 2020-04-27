@@ -30,7 +30,12 @@ class FormBloc extends Bloc<FormBlocEvent, FormBlocState> {
         );
       },
       changeDoubledName: (e) async* {
-        yield state.copyWith(doubledName: Name(e.doubledName));
+        yield state.copyWith(
+          doubledName: Name(
+            e.doubledName,
+            notEqual: state.name.value.getOrElse(() => null),
+          ),
+        );
       },
       submit: (e) async* {
         // TODO

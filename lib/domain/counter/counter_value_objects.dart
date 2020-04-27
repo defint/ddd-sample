@@ -20,10 +20,10 @@ class Name extends ValueObject<String> {
   @override
   final Either<ValueFailure<String>, String> value;
 
-  factory Name(String value) {
+  factory Name(String value, {String notEqual}) {
     assert(value != null);
 
-    return Name._(validateName(value));
+    return Name._(validateName(value, notEqual: notEqual));
   }
 
   const Name._(this.value);

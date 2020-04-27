@@ -35,6 +35,14 @@ class FormScreen extends StatelessWidget implements AutoRouteWrapper {
             children: <Widget>[
               NameField(),
               AnotherField(),
+              RaisedButton(
+                onPressed: () {
+                  context
+                      .bloc<FormBloc>()
+                      .add(FormBlocEvent.initialized(initialValue));
+                },
+                child: const Text("RESET"),
+              ),
             ],
           ),
         ));

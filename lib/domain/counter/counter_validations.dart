@@ -5,5 +5,13 @@ import 'package:web_form/domain/core/value_failure.dart';
 Either<ValueFailure<int>, int> validateCounter(int input) =>
     validate(input, [ValidatorPositiveNumber()]);
 
-Either<ValueFailure<String>, String> validateName(String input) =>
-    validate(input, [ValidatorEmptyString(), ValidatorLengthMax(length: 8)]);
+Either<ValueFailure<String>, String> validateName(
+  String input, {
+  int maxLength = 8,
+  String notEqual,
+}) =>
+    validate(input, [
+      ValidatorEmptyString(),
+      ValidatorLengthMax(length: maxLength),
+      if (notEqual != null) ValidatorNotEqual<String>(checker: notEqual)
+    ]);

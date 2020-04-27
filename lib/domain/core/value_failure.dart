@@ -16,4 +16,9 @@ abstract class ValueFailure<T> with _$ValueFailure<T> {
     @required T failedValue,
     @required int length,
   }) = LengthMax<T>;
+
+  const factory ValueFailure.notEqual({
+    @required T failedValue,
+    @required T checker,
+  }) = NotEqual<T>;
 }

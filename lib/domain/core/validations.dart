@@ -9,7 +9,9 @@ Either<ValueFailure<T>, T> validate<T>(
   T value,
   List<IValidator<T>> validators,
 ) {
-  final checkedValidators = validators.map((e) => e.validate(value));
+  final checkedValidators = validators
+      .where((element) => element != null)
+      .map((e) => e.validate(value));
 
   final activeFailure = checkedValidators.firstWhere(
     (element) => element.isSome(),
@@ -42,5 +44,17 @@ class ValidatorLengthMax implements IValidator<String> {
   Option<ValueFailure<String>> validate(String value) {
     return option(value.length > length,
         ValueFailure.lengthMax(failedValue: value, length: length));
+  }
+}
+
+class ValidatorNotEqual<T> implements IValidator<T> {
+  final T checker;
+
+  ValidatorNotEqual({this.checker});
+
+  @override
+  Option<ValueFailure<T>> validate(T value) {
+    return option(value == checker,
+        ValueFailure<T>.notEqual(failedValue: value, checker: checker));
   }
 }

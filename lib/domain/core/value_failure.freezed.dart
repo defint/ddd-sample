@@ -30,6 +30,13 @@ class _$ValueFailureTearOff {
       length: length,
     );
   }
+
+  NotEqual<T> notEqual<T>({@required T failedValue, @required T checker}) {
+    return NotEqual<T>(
+      failedValue: failedValue,
+      checker: checker,
+    );
+  }
 }
 
 // ignore: unused_element
@@ -43,12 +50,14 @@ mixin _$ValueFailure<T> {
     @required Result positiveNumber(T failedValue),
     @required Result emptyString(T failedValue),
     @required Result lengthMax(T failedValue, int length),
+    @required Result notEqual(T failedValue, T checker),
   });
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
     Result positiveNumber(T failedValue),
     Result emptyString(T failedValue),
     Result lengthMax(T failedValue, int length),
+    Result notEqual(T failedValue, T checker),
     @required Result orElse(),
   });
   @optionalTypeArgs
@@ -56,12 +65,14 @@ mixin _$ValueFailure<T> {
     @required Result positiveNumber(PositiveNumber<T> value),
     @required Result emptyString(EmptyString<T> value),
     @required Result lengthMax(LengthMax<T> value),
+    @required Result notEqual(NotEqual<T> value),
   });
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
     Result positiveNumber(PositiveNumber<T> value),
     Result emptyString(EmptyString<T> value),
     Result lengthMax(LengthMax<T> value),
+    Result notEqual(NotEqual<T> value),
     @required Result orElse(),
   });
 
@@ -159,10 +170,12 @@ class _$PositiveNumber<T> implements PositiveNumber<T> {
     @required Result positiveNumber(T failedValue),
     @required Result emptyString(T failedValue),
     @required Result lengthMax(T failedValue, int length),
+    @required Result notEqual(T failedValue, T checker),
   }) {
     assert(positiveNumber != null);
     assert(emptyString != null);
     assert(lengthMax != null);
+    assert(notEqual != null);
     return positiveNumber(failedValue);
   }
 
@@ -172,6 +185,7 @@ class _$PositiveNumber<T> implements PositiveNumber<T> {
     Result positiveNumber(T failedValue),
     Result emptyString(T failedValue),
     Result lengthMax(T failedValue, int length),
+    Result notEqual(T failedValue, T checker),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -187,10 +201,12 @@ class _$PositiveNumber<T> implements PositiveNumber<T> {
     @required Result positiveNumber(PositiveNumber<T> value),
     @required Result emptyString(EmptyString<T> value),
     @required Result lengthMax(LengthMax<T> value),
+    @required Result notEqual(NotEqual<T> value),
   }) {
     assert(positiveNumber != null);
     assert(emptyString != null);
     assert(lengthMax != null);
+    assert(notEqual != null);
     return positiveNumber(this);
   }
 
@@ -200,6 +216,7 @@ class _$PositiveNumber<T> implements PositiveNumber<T> {
     Result positiveNumber(PositiveNumber<T> value),
     Result emptyString(EmptyString<T> value),
     Result lengthMax(LengthMax<T> value),
+    Result notEqual(NotEqual<T> value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -284,10 +301,12 @@ class _$EmptyString<T> implements EmptyString<T> {
     @required Result positiveNumber(T failedValue),
     @required Result emptyString(T failedValue),
     @required Result lengthMax(T failedValue, int length),
+    @required Result notEqual(T failedValue, T checker),
   }) {
     assert(positiveNumber != null);
     assert(emptyString != null);
     assert(lengthMax != null);
+    assert(notEqual != null);
     return emptyString(failedValue);
   }
 
@@ -297,6 +316,7 @@ class _$EmptyString<T> implements EmptyString<T> {
     Result positiveNumber(T failedValue),
     Result emptyString(T failedValue),
     Result lengthMax(T failedValue, int length),
+    Result notEqual(T failedValue, T checker),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -312,10 +332,12 @@ class _$EmptyString<T> implements EmptyString<T> {
     @required Result positiveNumber(PositiveNumber<T> value),
     @required Result emptyString(EmptyString<T> value),
     @required Result lengthMax(LengthMax<T> value),
+    @required Result notEqual(NotEqual<T> value),
   }) {
     assert(positiveNumber != null);
     assert(emptyString != null);
     assert(lengthMax != null);
+    assert(notEqual != null);
     return emptyString(this);
   }
 
@@ -325,6 +347,7 @@ class _$EmptyString<T> implements EmptyString<T> {
     Result positiveNumber(PositiveNumber<T> value),
     Result emptyString(EmptyString<T> value),
     Result lengthMax(LengthMax<T> value),
+    Result notEqual(NotEqual<T> value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -418,10 +441,12 @@ class _$LengthMax<T> implements LengthMax<T> {
     @required Result positiveNumber(T failedValue),
     @required Result emptyString(T failedValue),
     @required Result lengthMax(T failedValue, int length),
+    @required Result notEqual(T failedValue, T checker),
   }) {
     assert(positiveNumber != null);
     assert(emptyString != null);
     assert(lengthMax != null);
+    assert(notEqual != null);
     return lengthMax(failedValue, length);
   }
 
@@ -431,6 +456,7 @@ class _$LengthMax<T> implements LengthMax<T> {
     Result positiveNumber(T failedValue),
     Result emptyString(T failedValue),
     Result lengthMax(T failedValue, int length),
+    Result notEqual(T failedValue, T checker),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -446,10 +472,12 @@ class _$LengthMax<T> implements LengthMax<T> {
     @required Result positiveNumber(PositiveNumber<T> value),
     @required Result emptyString(EmptyString<T> value),
     @required Result lengthMax(LengthMax<T> value),
+    @required Result notEqual(NotEqual<T> value),
   }) {
     assert(positiveNumber != null);
     assert(emptyString != null);
     assert(lengthMax != null);
+    assert(notEqual != null);
     return lengthMax(this);
   }
 
@@ -459,6 +487,7 @@ class _$LengthMax<T> implements LengthMax<T> {
     Result positiveNumber(PositiveNumber<T> value),
     Result emptyString(EmptyString<T> value),
     Result lengthMax(LengthMax<T> value),
+    Result notEqual(NotEqual<T> value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -478,4 +507,145 @@ abstract class LengthMax<T> implements ValueFailure<T> {
   int get length;
   @override
   $LengthMaxCopyWith<T, LengthMax<T>> get copyWith;
+}
+
+abstract class $NotEqualCopyWith<T, $Res>
+    implements $ValueFailureCopyWith<T, $Res> {
+  factory $NotEqualCopyWith(
+          NotEqual<T> value, $Res Function(NotEqual<T>) then) =
+      _$NotEqualCopyWithImpl<T, $Res>;
+  @override
+  $Res call({T failedValue, T checker});
+}
+
+class _$NotEqualCopyWithImpl<T, $Res>
+    extends _$ValueFailureCopyWithImpl<T, $Res>
+    implements $NotEqualCopyWith<T, $Res> {
+  _$NotEqualCopyWithImpl(NotEqual<T> _value, $Res Function(NotEqual<T>) _then)
+      : super(_value, (v) => _then(v as NotEqual<T>));
+
+  @override
+  NotEqual<T> get _value => super._value as NotEqual<T>;
+
+  @override
+  $Res call({
+    Object failedValue = freezed,
+    Object checker = freezed,
+  }) {
+    return _then(NotEqual<T>(
+      failedValue:
+          failedValue == freezed ? _value.failedValue : failedValue as T,
+      checker: checker == freezed ? _value.checker : checker as T,
+    ));
+  }
+}
+
+class _$NotEqual<T> implements NotEqual<T> {
+  const _$NotEqual({@required this.failedValue, @required this.checker})
+      : assert(failedValue != null),
+        assert(checker != null);
+
+  @override
+  final T failedValue;
+  @override
+  final T checker;
+
+  @override
+  String toString() {
+    return 'ValueFailure<$T>.notEqual(failedValue: $failedValue, checker: $checker)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is NotEqual<T> &&
+            (identical(other.failedValue, failedValue) ||
+                const DeepCollectionEquality()
+                    .equals(other.failedValue, failedValue)) &&
+            (identical(other.checker, checker) ||
+                const DeepCollectionEquality().equals(other.checker, checker)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^
+      const DeepCollectionEquality().hash(failedValue) ^
+      const DeepCollectionEquality().hash(checker);
+
+  @override
+  $NotEqualCopyWith<T, NotEqual<T>> get copyWith =>
+      _$NotEqualCopyWithImpl<T, NotEqual<T>>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  Result when<Result extends Object>({
+    @required Result positiveNumber(T failedValue),
+    @required Result emptyString(T failedValue),
+    @required Result lengthMax(T failedValue, int length),
+    @required Result notEqual(T failedValue, T checker),
+  }) {
+    assert(positiveNumber != null);
+    assert(emptyString != null);
+    assert(lengthMax != null);
+    assert(notEqual != null);
+    return notEqual(failedValue, checker);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>({
+    Result positiveNumber(T failedValue),
+    Result emptyString(T failedValue),
+    Result lengthMax(T failedValue, int length),
+    Result notEqual(T failedValue, T checker),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (notEqual != null) {
+      return notEqual(failedValue, checker);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result map<Result extends Object>({
+    @required Result positiveNumber(PositiveNumber<T> value),
+    @required Result emptyString(EmptyString<T> value),
+    @required Result lengthMax(LengthMax<T> value),
+    @required Result notEqual(NotEqual<T> value),
+  }) {
+    assert(positiveNumber != null);
+    assert(emptyString != null);
+    assert(lengthMax != null);
+    assert(notEqual != null);
+    return notEqual(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>({
+    Result positiveNumber(PositiveNumber<T> value),
+    Result emptyString(EmptyString<T> value),
+    Result lengthMax(LengthMax<T> value),
+    Result notEqual(NotEqual<T> value),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (notEqual != null) {
+      return notEqual(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class NotEqual<T> implements ValueFailure<T> {
+  const factory NotEqual({@required T failedValue, @required T checker}) =
+      _$NotEqual<T>;
+
+  @override
+  T get failedValue;
+  T get checker;
+  @override
+  $NotEqualCopyWith<T, NotEqual<T>> get copyWith;
 }
