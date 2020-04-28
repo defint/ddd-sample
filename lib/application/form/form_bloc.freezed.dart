@@ -556,10 +556,16 @@ abstract class Submit implements FormBlocEvent {
 class _$FormBlocStateTearOff {
   const _$FormBlocStateTearOff();
 
-  _FormState call({@required Name name, @required Name doubledName}) {
+  _FormState call(
+      {@required Name name,
+      @required Name doubledName,
+      @required bool isSubmitting,
+      @required Option<Either<BackendFailure, Unit>> result}) {
     return _FormState(
       name: name,
       doubledName: doubledName,
+      isSubmitting: isSubmitting,
+      result: result,
     );
   }
 }
@@ -570,6 +576,8 @@ const $FormBlocState = _$FormBlocStateTearOff();
 mixin _$FormBlocState {
   Name get name;
   Name get doubledName;
+  bool get isSubmitting;
+  Option<Either<BackendFailure, Unit>> get result;
 
   $FormBlocStateCopyWith<FormBlocState> get copyWith;
 }
@@ -578,7 +586,11 @@ abstract class $FormBlocStateCopyWith<$Res> {
   factory $FormBlocStateCopyWith(
           FormBlocState value, $Res Function(FormBlocState) then) =
       _$FormBlocStateCopyWithImpl<$Res>;
-  $Res call({Name name, Name doubledName});
+  $Res call(
+      {Name name,
+      Name doubledName,
+      bool isSubmitting,
+      Option<Either<BackendFailure, Unit>> result});
 }
 
 class _$FormBlocStateCopyWithImpl<$Res>
@@ -593,11 +605,18 @@ class _$FormBlocStateCopyWithImpl<$Res>
   $Res call({
     Object name = freezed,
     Object doubledName = freezed,
+    Object isSubmitting = freezed,
+    Object result = freezed,
   }) {
     return _then(_value.copyWith(
       name: name == freezed ? _value.name : name as Name,
       doubledName:
           doubledName == freezed ? _value.doubledName : doubledName as Name,
+      isSubmitting:
+          isSubmitting == freezed ? _value.isSubmitting : isSubmitting as bool,
+      result: result == freezed
+          ? _value.result
+          : result as Option<Either<BackendFailure, Unit>>,
     ));
   }
 }
@@ -608,7 +627,11 @@ abstract class _$FormStateCopyWith<$Res>
           _FormState value, $Res Function(_FormState) then) =
       __$FormStateCopyWithImpl<$Res>;
   @override
-  $Res call({Name name, Name doubledName});
+  $Res call(
+      {Name name,
+      Name doubledName,
+      bool isSubmitting,
+      Option<Either<BackendFailure, Unit>> result});
 }
 
 class __$FormStateCopyWithImpl<$Res> extends _$FormBlocStateCopyWithImpl<$Res>
@@ -623,28 +646,45 @@ class __$FormStateCopyWithImpl<$Res> extends _$FormBlocStateCopyWithImpl<$Res>
   $Res call({
     Object name = freezed,
     Object doubledName = freezed,
+    Object isSubmitting = freezed,
+    Object result = freezed,
   }) {
     return _then(_FormState(
       name: name == freezed ? _value.name : name as Name,
       doubledName:
           doubledName == freezed ? _value.doubledName : doubledName as Name,
+      isSubmitting:
+          isSubmitting == freezed ? _value.isSubmitting : isSubmitting as bool,
+      result: result == freezed
+          ? _value.result
+          : result as Option<Either<BackendFailure, Unit>>,
     ));
   }
 }
 
 class _$_FormState implements _FormState {
-  const _$_FormState({@required this.name, @required this.doubledName})
+  const _$_FormState(
+      {@required this.name,
+      @required this.doubledName,
+      @required this.isSubmitting,
+      @required this.result})
       : assert(name != null),
-        assert(doubledName != null);
+        assert(doubledName != null),
+        assert(isSubmitting != null),
+        assert(result != null);
 
   @override
   final Name name;
   @override
   final Name doubledName;
+  @override
+  final bool isSubmitting;
+  @override
+  final Option<Either<BackendFailure, Unit>> result;
 
   @override
   String toString() {
-    return 'FormBlocState(name: $name, doubledName: $doubledName)';
+    return 'FormBlocState(name: $name, doubledName: $doubledName, isSubmitting: $isSubmitting, result: $result)';
   }
 
   @override
@@ -655,14 +695,21 @@ class _$_FormState implements _FormState {
                 const DeepCollectionEquality().equals(other.name, name)) &&
             (identical(other.doubledName, doubledName) ||
                 const DeepCollectionEquality()
-                    .equals(other.doubledName, doubledName)));
+                    .equals(other.doubledName, doubledName)) &&
+            (identical(other.isSubmitting, isSubmitting) ||
+                const DeepCollectionEquality()
+                    .equals(other.isSubmitting, isSubmitting)) &&
+            (identical(other.result, result) ||
+                const DeepCollectionEquality().equals(other.result, result)));
   }
 
   @override
   int get hashCode =>
       runtimeType.hashCode ^
       const DeepCollectionEquality().hash(name) ^
-      const DeepCollectionEquality().hash(doubledName);
+      const DeepCollectionEquality().hash(doubledName) ^
+      const DeepCollectionEquality().hash(isSubmitting) ^
+      const DeepCollectionEquality().hash(result);
 
   @override
   _$FormStateCopyWith<_FormState> get copyWith =>
@@ -670,13 +717,20 @@ class _$_FormState implements _FormState {
 }
 
 abstract class _FormState implements FormBlocState {
-  const factory _FormState({@required Name name, @required Name doubledName}) =
-      _$_FormState;
+  const factory _FormState(
+      {@required Name name,
+      @required Name doubledName,
+      @required bool isSubmitting,
+      @required Option<Either<BackendFailure, Unit>> result}) = _$_FormState;
 
   @override
   Name get name;
   @override
   Name get doubledName;
+  @override
+  bool get isSubmitting;
+  @override
+  Option<Either<BackendFailure, Unit>> get result;
   @override
   _$FormStateCopyWith<_FormState> get copyWith;
 }

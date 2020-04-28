@@ -14,7 +14,7 @@ class NameField extends HookWidget {
           fieldController.text = state.name.value.getOrElse(() => "");
         },
         listenWhen: (p, c) => !_focusNode.hasFocus && p.name != c.name,
-        buildWhen: (p, c) => p.name != c.name,
+        buildWhen: (p, c) => p.name != c.name || p.result != c.result,
         builder: (context, state) {
           return TextFormField(
               controller: fieldController,
@@ -34,7 +34,17 @@ class NameField extends HookWidget {
                       lengthMax: (error) => 'Max length: ${error.length}',
                       orElse: () => null,
                     ),
-                    (_) => null,
+                    (_) => context.bloc<FormBloc>().state.result.fold(
+                          () => null,
+                          (a) => a.fold(
+                            (l) => l.maybeMap(
+                              nameInvalid: (_) =>
+                                  'Invalid name from the server',
+                              orElse: () => null,
+                            ),
+                            (r) => null,
+                          ),
+                        ),
                   ));
         });
   }

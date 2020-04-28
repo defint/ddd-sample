@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:web_form/application/form/form_bloc.dart';
 import 'package:web_form/domain/counter/counter_value_objects.dart';
 import 'package:web_form/injection.dart';
+import 'package:web_form/presentation/routes/router.gr.dart';
 import 'package:web_form/presentation/screens/form_screen/another_field.dart';
 import 'package:web_form/presentation/screens/form_screen/name_field.dart';
 
@@ -22,6 +23,8 @@ class FormScreen extends StatelessWidget implements AutoRouteWrapper {
 
   final String title;
 
+  final _formKey = GlobalKey<FormState>();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -29,6 +32,7 @@ class FormScreen extends StatelessWidget implements AutoRouteWrapper {
           title: Text(title),
         ),
         body: Form(
+          key: _formKey,
           autovalidate: true,
           child: ListView(
             padding: const EdgeInsets.all(8.0),
@@ -43,6 +47,29 @@ class FormScreen extends StatelessWidget implements AutoRouteWrapper {
                 },
                 child: const Text("RESET"),
               ),
+              BlocConsumer<FormBloc, FormBlocState>(
+                  listener: (context, state) {
+                    state.result.fold(
+                      () => null,
+                      (a) => a.fold(
+                        (l) => null,
+                        (r) => Router.navigator.pop(),
+                      ),
+                    );
+                  },
+                  buildWhen: (p, c) => p.isSubmitting != c.isSubmitting,
+                  builder: (context, state) {
+                    return RaisedButton(
+                      onPressed: () {
+                        if (_formKey.currentState.validate()) {
+                          context.bloc<FormBloc>().add(FormBlocEvent.submit());
+                        }
+                      },
+                      child: state.isSubmitting
+                          ? Text('Submitting...')
+                          : Text('SUBMIT'),
+                    );
+                  }),
             ],
           ),
         ));
