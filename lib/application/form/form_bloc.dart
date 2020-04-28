@@ -37,6 +37,32 @@ class FormBloc extends Bloc<FormBlocEvent, FormBlocState> {
           doubledName: Name("${e.name}${e.name}"),
         );
       },
+      changePosition: (e) async* {
+        yield state.copyWith(
+          position: Position(e.position),
+        );
+
+        add(const FormBlocEvent.validatePosition());
+      },
+      validatePosition: (e) async* {
+        await Future.delayed(const Duration(milliseconds: 300));
+
+        final pos = state.position.value.fold(
+            (l) => l.maybeMap(
+                  customError: (e) => e.failedValue,
+                  orElse: () => null,
+                ),
+            (r) => r);
+
+        if (pos != null && pos.contains("a")) {
+          yield state.copyWith(
+            position: Position.withCustomError(
+              pos,
+              customError: "Async validation error",
+            ),
+          );
+        }
+      },
       changeDoubledName: (e) async* {
         yield state.copyWith(
           doubledName: Name(

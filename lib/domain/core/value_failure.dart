@@ -21,4 +21,9 @@ abstract class ValueFailure<T> with _$ValueFailure<T> {
     @required T failedValue,
     @required T checker,
   }) = NotEqual<T>;
+
+  const factory ValueFailure.customError({
+    @required T failedValue,
+    @required String error,
+  }) = CustomError<T>;
 }

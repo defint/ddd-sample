@@ -8,6 +8,7 @@ import 'package:web_form/injection.dart';
 import 'package:web_form/presentation/routes/router.gr.dart';
 import 'package:web_form/presentation/screens/form_screen/another_field.dart';
 import 'package:web_form/presentation/screens/form_screen/name_field.dart';
+import 'package:web_form/presentation/screens/form_screen/position_field.dart';
 
 class FormScreen extends StatelessWidget implements AutoRouteWrapper {
   final Counter initialValue;
@@ -43,6 +44,10 @@ class FormScreen extends StatelessWidget implements AutoRouteWrapper {
                 height: 20,
               ),
               DoubledNameTextField(),
+              Container(
+                height: 20,
+              ),
+              PositionTextField(),
               Container(
                 height: 20,
               ),

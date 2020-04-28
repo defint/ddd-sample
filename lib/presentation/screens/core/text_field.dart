@@ -15,6 +15,17 @@ abstract class CoreTextField<B extends Bloc<dynamic, S>, S> extends HookWidget {
   String getErrorText(BuildContext context, {bool isTouched}) {
     final S state = context.bloc<B>().state;
 
+    final customError = getValueObject(state).value.fold(
+          (f) => f.maybeMap(
+            customError: (error) => error.error,
+            orElse: () => null,
+          ),
+          (_) => null,
+        );
+    if (customError != null) {
+      return customError;
+    }
+
     if (!isTouched &&
         getStatus(state) == const ApplicationStatus.formInitial()) {
       return null;

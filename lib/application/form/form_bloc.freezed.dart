@@ -24,6 +24,16 @@ class _$FormBlocEventTearOff {
     );
   }
 
+  ChangePosition changePosition(String position) {
+    return ChangePosition(
+      position,
+    );
+  }
+
+  ValidatePosition validatePosition() {
+    return const ValidatePosition();
+  }
+
   ChangeDoubledName changeDoubledName(String doubledName) {
     return ChangeDoubledName(
       doubledName,
@@ -43,6 +53,8 @@ mixin _$FormBlocEvent {
   Result when<Result extends Object>({
     @required Result initialized(Counter counter),
     @required Result changeName(String name),
+    @required Result changePosition(String position),
+    @required Result validatePosition(),
     @required Result changeDoubledName(String doubledName),
     @required Result submit(),
   });
@@ -50,6 +62,8 @@ mixin _$FormBlocEvent {
   Result maybeWhen<Result extends Object>({
     Result initialized(Counter counter),
     Result changeName(String name),
+    Result changePosition(String position),
+    Result validatePosition(),
     Result changeDoubledName(String doubledName),
     Result submit(),
     @required Result orElse(),
@@ -58,6 +72,8 @@ mixin _$FormBlocEvent {
   Result map<Result extends Object>({
     @required Result initialized(Initialized value),
     @required Result changeName(ChangeName value),
+    @required Result changePosition(ChangePosition value),
+    @required Result validatePosition(ValidatePosition value),
     @required Result changeDoubledName(ChangeDoubledName value),
     @required Result submit(Submit value),
   });
@@ -65,6 +81,8 @@ mixin _$FormBlocEvent {
   Result maybeMap<Result extends Object>({
     Result initialized(Initialized value),
     Result changeName(ChangeName value),
+    Result changePosition(ChangePosition value),
+    Result validatePosition(ValidatePosition value),
     Result changeDoubledName(ChangeDoubledName value),
     Result submit(Submit value),
     @required Result orElse(),
@@ -144,11 +162,15 @@ class _$Initialized implements Initialized {
   Result when<Result extends Object>({
     @required Result initialized(Counter counter),
     @required Result changeName(String name),
+    @required Result changePosition(String position),
+    @required Result validatePosition(),
     @required Result changeDoubledName(String doubledName),
     @required Result submit(),
   }) {
     assert(initialized != null);
     assert(changeName != null);
+    assert(changePosition != null);
+    assert(validatePosition != null);
     assert(changeDoubledName != null);
     assert(submit != null);
     return initialized(counter);
@@ -159,6 +181,8 @@ class _$Initialized implements Initialized {
   Result maybeWhen<Result extends Object>({
     Result initialized(Counter counter),
     Result changeName(String name),
+    Result changePosition(String position),
+    Result validatePosition(),
     Result changeDoubledName(String doubledName),
     Result submit(),
     @required Result orElse(),
@@ -175,11 +199,15 @@ class _$Initialized implements Initialized {
   Result map<Result extends Object>({
     @required Result initialized(Initialized value),
     @required Result changeName(ChangeName value),
+    @required Result changePosition(ChangePosition value),
+    @required Result validatePosition(ValidatePosition value),
     @required Result changeDoubledName(ChangeDoubledName value),
     @required Result submit(Submit value),
   }) {
     assert(initialized != null);
     assert(changeName != null);
+    assert(changePosition != null);
+    assert(validatePosition != null);
     assert(changeDoubledName != null);
     assert(submit != null);
     return initialized(this);
@@ -190,6 +218,8 @@ class _$Initialized implements Initialized {
   Result maybeMap<Result extends Object>({
     Result initialized(Initialized value),
     Result changeName(ChangeName value),
+    Result changePosition(ChangePosition value),
+    Result validatePosition(ValidatePosition value),
     Result changeDoubledName(ChangeDoubledName value),
     Result submit(Submit value),
     @required Result orElse(),
@@ -266,11 +296,15 @@ class _$ChangeName implements ChangeName {
   Result when<Result extends Object>({
     @required Result initialized(Counter counter),
     @required Result changeName(String name),
+    @required Result changePosition(String position),
+    @required Result validatePosition(),
     @required Result changeDoubledName(String doubledName),
     @required Result submit(),
   }) {
     assert(initialized != null);
     assert(changeName != null);
+    assert(changePosition != null);
+    assert(validatePosition != null);
     assert(changeDoubledName != null);
     assert(submit != null);
     return changeName(name);
@@ -281,6 +315,8 @@ class _$ChangeName implements ChangeName {
   Result maybeWhen<Result extends Object>({
     Result initialized(Counter counter),
     Result changeName(String name),
+    Result changePosition(String position),
+    Result validatePosition(),
     Result changeDoubledName(String doubledName),
     Result submit(),
     @required Result orElse(),
@@ -297,11 +333,15 @@ class _$ChangeName implements ChangeName {
   Result map<Result extends Object>({
     @required Result initialized(Initialized value),
     @required Result changeName(ChangeName value),
+    @required Result changePosition(ChangePosition value),
+    @required Result validatePosition(ValidatePosition value),
     @required Result changeDoubledName(ChangeDoubledName value),
     @required Result submit(Submit value),
   }) {
     assert(initialized != null);
     assert(changeName != null);
+    assert(changePosition != null);
+    assert(validatePosition != null);
     assert(changeDoubledName != null);
     assert(submit != null);
     return changeName(this);
@@ -312,6 +352,8 @@ class _$ChangeName implements ChangeName {
   Result maybeMap<Result extends Object>({
     Result initialized(Initialized value),
     Result changeName(ChangeName value),
+    Result changePosition(ChangePosition value),
+    Result validatePosition(ValidatePosition value),
     Result changeDoubledName(ChangeDoubledName value),
     Result submit(Submit value),
     @required Result orElse(),
@@ -329,6 +371,255 @@ abstract class ChangeName implements FormBlocEvent {
 
   String get name;
   $ChangeNameCopyWith<ChangeName> get copyWith;
+}
+
+abstract class $ChangePositionCopyWith<$Res> {
+  factory $ChangePositionCopyWith(
+          ChangePosition value, $Res Function(ChangePosition) then) =
+      _$ChangePositionCopyWithImpl<$Res>;
+  $Res call({String position});
+}
+
+class _$ChangePositionCopyWithImpl<$Res>
+    extends _$FormBlocEventCopyWithImpl<$Res>
+    implements $ChangePositionCopyWith<$Res> {
+  _$ChangePositionCopyWithImpl(
+      ChangePosition _value, $Res Function(ChangePosition) _then)
+      : super(_value, (v) => _then(v as ChangePosition));
+
+  @override
+  ChangePosition get _value => super._value as ChangePosition;
+
+  @override
+  $Res call({
+    Object position = freezed,
+  }) {
+    return _then(ChangePosition(
+      position == freezed ? _value.position : position as String,
+    ));
+  }
+}
+
+class _$ChangePosition implements ChangePosition {
+  const _$ChangePosition(this.position) : assert(position != null);
+
+  @override
+  final String position;
+
+  @override
+  String toString() {
+    return 'FormBlocEvent.changePosition(position: $position)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is ChangePosition &&
+            (identical(other.position, position) ||
+                const DeepCollectionEquality()
+                    .equals(other.position, position)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(position);
+
+  @override
+  $ChangePositionCopyWith<ChangePosition> get copyWith =>
+      _$ChangePositionCopyWithImpl<ChangePosition>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  Result when<Result extends Object>({
+    @required Result initialized(Counter counter),
+    @required Result changeName(String name),
+    @required Result changePosition(String position),
+    @required Result validatePosition(),
+    @required Result changeDoubledName(String doubledName),
+    @required Result submit(),
+  }) {
+    assert(initialized != null);
+    assert(changeName != null);
+    assert(changePosition != null);
+    assert(validatePosition != null);
+    assert(changeDoubledName != null);
+    assert(submit != null);
+    return changePosition(position);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>({
+    Result initialized(Counter counter),
+    Result changeName(String name),
+    Result changePosition(String position),
+    Result validatePosition(),
+    Result changeDoubledName(String doubledName),
+    Result submit(),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (changePosition != null) {
+      return changePosition(position);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result map<Result extends Object>({
+    @required Result initialized(Initialized value),
+    @required Result changeName(ChangeName value),
+    @required Result changePosition(ChangePosition value),
+    @required Result validatePosition(ValidatePosition value),
+    @required Result changeDoubledName(ChangeDoubledName value),
+    @required Result submit(Submit value),
+  }) {
+    assert(initialized != null);
+    assert(changeName != null);
+    assert(changePosition != null);
+    assert(validatePosition != null);
+    assert(changeDoubledName != null);
+    assert(submit != null);
+    return changePosition(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>({
+    Result initialized(Initialized value),
+    Result changeName(ChangeName value),
+    Result changePosition(ChangePosition value),
+    Result validatePosition(ValidatePosition value),
+    Result changeDoubledName(ChangeDoubledName value),
+    Result submit(Submit value),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (changePosition != null) {
+      return changePosition(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class ChangePosition implements FormBlocEvent {
+  const factory ChangePosition(String position) = _$ChangePosition;
+
+  String get position;
+  $ChangePositionCopyWith<ChangePosition> get copyWith;
+}
+
+abstract class $ValidatePositionCopyWith<$Res> {
+  factory $ValidatePositionCopyWith(
+          ValidatePosition value, $Res Function(ValidatePosition) then) =
+      _$ValidatePositionCopyWithImpl<$Res>;
+}
+
+class _$ValidatePositionCopyWithImpl<$Res>
+    extends _$FormBlocEventCopyWithImpl<$Res>
+    implements $ValidatePositionCopyWith<$Res> {
+  _$ValidatePositionCopyWithImpl(
+      ValidatePosition _value, $Res Function(ValidatePosition) _then)
+      : super(_value, (v) => _then(v as ValidatePosition));
+
+  @override
+  ValidatePosition get _value => super._value as ValidatePosition;
+}
+
+class _$ValidatePosition implements ValidatePosition {
+  const _$ValidatePosition();
+
+  @override
+  String toString() {
+    return 'FormBlocEvent.validatePosition()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) || (other is ValidatePosition);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  Result when<Result extends Object>({
+    @required Result initialized(Counter counter),
+    @required Result changeName(String name),
+    @required Result changePosition(String position),
+    @required Result validatePosition(),
+    @required Result changeDoubledName(String doubledName),
+    @required Result submit(),
+  }) {
+    assert(initialized != null);
+    assert(changeName != null);
+    assert(changePosition != null);
+    assert(validatePosition != null);
+    assert(changeDoubledName != null);
+    assert(submit != null);
+    return validatePosition();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>({
+    Result initialized(Counter counter),
+    Result changeName(String name),
+    Result changePosition(String position),
+    Result validatePosition(),
+    Result changeDoubledName(String doubledName),
+    Result submit(),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (validatePosition != null) {
+      return validatePosition();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result map<Result extends Object>({
+    @required Result initialized(Initialized value),
+    @required Result changeName(ChangeName value),
+    @required Result changePosition(ChangePosition value),
+    @required Result validatePosition(ValidatePosition value),
+    @required Result changeDoubledName(ChangeDoubledName value),
+    @required Result submit(Submit value),
+  }) {
+    assert(initialized != null);
+    assert(changeName != null);
+    assert(changePosition != null);
+    assert(validatePosition != null);
+    assert(changeDoubledName != null);
+    assert(submit != null);
+    return validatePosition(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>({
+    Result initialized(Initialized value),
+    Result changeName(ChangeName value),
+    Result changePosition(ChangePosition value),
+    Result validatePosition(ValidatePosition value),
+    Result changeDoubledName(ChangeDoubledName value),
+    Result submit(Submit value),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (validatePosition != null) {
+      return validatePosition(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class ValidatePosition implements FormBlocEvent {
+  const factory ValidatePosition() = _$ValidatePosition;
 }
 
 abstract class $ChangeDoubledNameCopyWith<$Res> {
@@ -391,11 +682,15 @@ class _$ChangeDoubledName implements ChangeDoubledName {
   Result when<Result extends Object>({
     @required Result initialized(Counter counter),
     @required Result changeName(String name),
+    @required Result changePosition(String position),
+    @required Result validatePosition(),
     @required Result changeDoubledName(String doubledName),
     @required Result submit(),
   }) {
     assert(initialized != null);
     assert(changeName != null);
+    assert(changePosition != null);
+    assert(validatePosition != null);
     assert(changeDoubledName != null);
     assert(submit != null);
     return changeDoubledName(doubledName);
@@ -406,6 +701,8 @@ class _$ChangeDoubledName implements ChangeDoubledName {
   Result maybeWhen<Result extends Object>({
     Result initialized(Counter counter),
     Result changeName(String name),
+    Result changePosition(String position),
+    Result validatePosition(),
     Result changeDoubledName(String doubledName),
     Result submit(),
     @required Result orElse(),
@@ -422,11 +719,15 @@ class _$ChangeDoubledName implements ChangeDoubledName {
   Result map<Result extends Object>({
     @required Result initialized(Initialized value),
     @required Result changeName(ChangeName value),
+    @required Result changePosition(ChangePosition value),
+    @required Result validatePosition(ValidatePosition value),
     @required Result changeDoubledName(ChangeDoubledName value),
     @required Result submit(Submit value),
   }) {
     assert(initialized != null);
     assert(changeName != null);
+    assert(changePosition != null);
+    assert(validatePosition != null);
     assert(changeDoubledName != null);
     assert(submit != null);
     return changeDoubledName(this);
@@ -437,6 +738,8 @@ class _$ChangeDoubledName implements ChangeDoubledName {
   Result maybeMap<Result extends Object>({
     Result initialized(Initialized value),
     Result changeName(ChangeName value),
+    Result changePosition(ChangePosition value),
+    Result validatePosition(ValidatePosition value),
     Result changeDoubledName(ChangeDoubledName value),
     Result submit(Submit value),
     @required Result orElse(),
@@ -491,11 +794,15 @@ class _$Submit implements Submit {
   Result when<Result extends Object>({
     @required Result initialized(Counter counter),
     @required Result changeName(String name),
+    @required Result changePosition(String position),
+    @required Result validatePosition(),
     @required Result changeDoubledName(String doubledName),
     @required Result submit(),
   }) {
     assert(initialized != null);
     assert(changeName != null);
+    assert(changePosition != null);
+    assert(validatePosition != null);
     assert(changeDoubledName != null);
     assert(submit != null);
     return submit();
@@ -506,6 +813,8 @@ class _$Submit implements Submit {
   Result maybeWhen<Result extends Object>({
     Result initialized(Counter counter),
     Result changeName(String name),
+    Result changePosition(String position),
+    Result validatePosition(),
     Result changeDoubledName(String doubledName),
     Result submit(),
     @required Result orElse(),
@@ -522,11 +831,15 @@ class _$Submit implements Submit {
   Result map<Result extends Object>({
     @required Result initialized(Initialized value),
     @required Result changeName(ChangeName value),
+    @required Result changePosition(ChangePosition value),
+    @required Result validatePosition(ValidatePosition value),
     @required Result changeDoubledName(ChangeDoubledName value),
     @required Result submit(Submit value),
   }) {
     assert(initialized != null);
     assert(changeName != null);
+    assert(changePosition != null);
+    assert(validatePosition != null);
     assert(changeDoubledName != null);
     assert(submit != null);
     return submit(this);
@@ -537,6 +850,8 @@ class _$Submit implements Submit {
   Result maybeMap<Result extends Object>({
     Result initialized(Initialized value),
     Result changeName(ChangeName value),
+    Result changePosition(ChangePosition value),
+    Result validatePosition(ValidatePosition value),
     Result changeDoubledName(ChangeDoubledName value),
     Result submit(Submit value),
     @required Result orElse(),
@@ -559,11 +874,13 @@ class _$FormBlocStateTearOff {
   _FormState call(
       {@required Name name,
       @required Name doubledName,
+      @required Position position,
       @required ApplicationStatus applicationStatus,
       @required Option<Either<BackendFailure, Unit>> result}) {
     return _FormState(
       name: name,
       doubledName: doubledName,
+      position: position,
       applicationStatus: applicationStatus,
       result: result,
     );
@@ -576,6 +893,7 @@ const $FormBlocState = _$FormBlocStateTearOff();
 mixin _$FormBlocState {
   Name get name;
   Name get doubledName;
+  Position get position;
   ApplicationStatus get applicationStatus;
   Option<Either<BackendFailure, Unit>> get result;
 
@@ -589,6 +907,7 @@ abstract class $FormBlocStateCopyWith<$Res> {
   $Res call(
       {Name name,
       Name doubledName,
+      Position position,
       ApplicationStatus applicationStatus,
       Option<Either<BackendFailure, Unit>> result});
 
@@ -607,6 +926,7 @@ class _$FormBlocStateCopyWithImpl<$Res>
   $Res call({
     Object name = freezed,
     Object doubledName = freezed,
+    Object position = freezed,
     Object applicationStatus = freezed,
     Object result = freezed,
   }) {
@@ -614,6 +934,7 @@ class _$FormBlocStateCopyWithImpl<$Res>
       name: name == freezed ? _value.name : name as Name,
       doubledName:
           doubledName == freezed ? _value.doubledName : doubledName as Name,
+      position: position == freezed ? _value.position : position as Position,
       applicationStatus: applicationStatus == freezed
           ? _value.applicationStatus
           : applicationStatus as ApplicationStatus,
@@ -643,6 +964,7 @@ abstract class _$FormStateCopyWith<$Res>
   $Res call(
       {Name name,
       Name doubledName,
+      Position position,
       ApplicationStatus applicationStatus,
       Option<Either<BackendFailure, Unit>> result});
 
@@ -662,6 +984,7 @@ class __$FormStateCopyWithImpl<$Res> extends _$FormBlocStateCopyWithImpl<$Res>
   $Res call({
     Object name = freezed,
     Object doubledName = freezed,
+    Object position = freezed,
     Object applicationStatus = freezed,
     Object result = freezed,
   }) {
@@ -669,6 +992,7 @@ class __$FormStateCopyWithImpl<$Res> extends _$FormBlocStateCopyWithImpl<$Res>
       name: name == freezed ? _value.name : name as Name,
       doubledName:
           doubledName == freezed ? _value.doubledName : doubledName as Name,
+      position: position == freezed ? _value.position : position as Position,
       applicationStatus: applicationStatus == freezed
           ? _value.applicationStatus
           : applicationStatus as ApplicationStatus,
@@ -683,10 +1007,12 @@ class _$_FormState implements _FormState {
   const _$_FormState(
       {@required this.name,
       @required this.doubledName,
+      @required this.position,
       @required this.applicationStatus,
       @required this.result})
       : assert(name != null),
         assert(doubledName != null),
+        assert(position != null),
         assert(applicationStatus != null),
         assert(result != null);
 
@@ -695,13 +1021,15 @@ class _$_FormState implements _FormState {
   @override
   final Name doubledName;
   @override
+  final Position position;
+  @override
   final ApplicationStatus applicationStatus;
   @override
   final Option<Either<BackendFailure, Unit>> result;
 
   @override
   String toString() {
-    return 'FormBlocState(name: $name, doubledName: $doubledName, applicationStatus: $applicationStatus, result: $result)';
+    return 'FormBlocState(name: $name, doubledName: $doubledName, position: $position, applicationStatus: $applicationStatus, result: $result)';
   }
 
   @override
@@ -713,6 +1041,9 @@ class _$_FormState implements _FormState {
             (identical(other.doubledName, doubledName) ||
                 const DeepCollectionEquality()
                     .equals(other.doubledName, doubledName)) &&
+            (identical(other.position, position) ||
+                const DeepCollectionEquality()
+                    .equals(other.position, position)) &&
             (identical(other.applicationStatus, applicationStatus) ||
                 const DeepCollectionEquality()
                     .equals(other.applicationStatus, applicationStatus)) &&
@@ -725,6 +1056,7 @@ class _$_FormState implements _FormState {
       runtimeType.hashCode ^
       const DeepCollectionEquality().hash(name) ^
       const DeepCollectionEquality().hash(doubledName) ^
+      const DeepCollectionEquality().hash(position) ^
       const DeepCollectionEquality().hash(applicationStatus) ^
       const DeepCollectionEquality().hash(result);
 
@@ -737,6 +1069,7 @@ abstract class _FormState implements FormBlocState {
   const factory _FormState(
       {@required Name name,
       @required Name doubledName,
+      @required Position position,
       @required ApplicationStatus applicationStatus,
       @required Option<Either<BackendFailure, Unit>> result}) = _$_FormState;
 
@@ -744,6 +1077,8 @@ abstract class _FormState implements FormBlocState {
   Name get name;
   @override
   Name get doubledName;
+  @override
+  Position get position;
   @override
   ApplicationStatus get applicationStatus;
   @override
