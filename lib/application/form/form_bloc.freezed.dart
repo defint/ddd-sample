@@ -559,12 +559,12 @@ class _$FormBlocStateTearOff {
   _FormState call(
       {@required Name name,
       @required Name doubledName,
-      @required bool isSubmitting,
+      @required ApplicationStatus applicationStatus,
       @required Option<Either<BackendFailure, Unit>> result}) {
     return _FormState(
       name: name,
       doubledName: doubledName,
-      isSubmitting: isSubmitting,
+      applicationStatus: applicationStatus,
       result: result,
     );
   }
@@ -576,7 +576,7 @@ const $FormBlocState = _$FormBlocStateTearOff();
 mixin _$FormBlocState {
   Name get name;
   Name get doubledName;
-  bool get isSubmitting;
+  ApplicationStatus get applicationStatus;
   Option<Either<BackendFailure, Unit>> get result;
 
   $FormBlocStateCopyWith<FormBlocState> get copyWith;
@@ -589,8 +589,10 @@ abstract class $FormBlocStateCopyWith<$Res> {
   $Res call(
       {Name name,
       Name doubledName,
-      bool isSubmitting,
+      ApplicationStatus applicationStatus,
       Option<Either<BackendFailure, Unit>> result});
+
+  $ApplicationStatusCopyWith<$Res> get applicationStatus;
 }
 
 class _$FormBlocStateCopyWithImpl<$Res>
@@ -605,19 +607,30 @@ class _$FormBlocStateCopyWithImpl<$Res>
   $Res call({
     Object name = freezed,
     Object doubledName = freezed,
-    Object isSubmitting = freezed,
+    Object applicationStatus = freezed,
     Object result = freezed,
   }) {
     return _then(_value.copyWith(
       name: name == freezed ? _value.name : name as Name,
       doubledName:
           doubledName == freezed ? _value.doubledName : doubledName as Name,
-      isSubmitting:
-          isSubmitting == freezed ? _value.isSubmitting : isSubmitting as bool,
+      applicationStatus: applicationStatus == freezed
+          ? _value.applicationStatus
+          : applicationStatus as ApplicationStatus,
       result: result == freezed
           ? _value.result
           : result as Option<Either<BackendFailure, Unit>>,
     ));
+  }
+
+  @override
+  $ApplicationStatusCopyWith<$Res> get applicationStatus {
+    if (_value.applicationStatus == null) {
+      return null;
+    }
+    return $ApplicationStatusCopyWith<$Res>(_value.applicationStatus, (value) {
+      return _then(_value.copyWith(applicationStatus: value));
+    });
   }
 }
 
@@ -630,8 +643,11 @@ abstract class _$FormStateCopyWith<$Res>
   $Res call(
       {Name name,
       Name doubledName,
-      bool isSubmitting,
+      ApplicationStatus applicationStatus,
       Option<Either<BackendFailure, Unit>> result});
+
+  @override
+  $ApplicationStatusCopyWith<$Res> get applicationStatus;
 }
 
 class __$FormStateCopyWithImpl<$Res> extends _$FormBlocStateCopyWithImpl<$Res>
@@ -646,15 +662,16 @@ class __$FormStateCopyWithImpl<$Res> extends _$FormBlocStateCopyWithImpl<$Res>
   $Res call({
     Object name = freezed,
     Object doubledName = freezed,
-    Object isSubmitting = freezed,
+    Object applicationStatus = freezed,
     Object result = freezed,
   }) {
     return _then(_FormState(
       name: name == freezed ? _value.name : name as Name,
       doubledName:
           doubledName == freezed ? _value.doubledName : doubledName as Name,
-      isSubmitting:
-          isSubmitting == freezed ? _value.isSubmitting : isSubmitting as bool,
+      applicationStatus: applicationStatus == freezed
+          ? _value.applicationStatus
+          : applicationStatus as ApplicationStatus,
       result: result == freezed
           ? _value.result
           : result as Option<Either<BackendFailure, Unit>>,
@@ -666,11 +683,11 @@ class _$_FormState implements _FormState {
   const _$_FormState(
       {@required this.name,
       @required this.doubledName,
-      @required this.isSubmitting,
+      @required this.applicationStatus,
       @required this.result})
       : assert(name != null),
         assert(doubledName != null),
-        assert(isSubmitting != null),
+        assert(applicationStatus != null),
         assert(result != null);
 
   @override
@@ -678,13 +695,13 @@ class _$_FormState implements _FormState {
   @override
   final Name doubledName;
   @override
-  final bool isSubmitting;
+  final ApplicationStatus applicationStatus;
   @override
   final Option<Either<BackendFailure, Unit>> result;
 
   @override
   String toString() {
-    return 'FormBlocState(name: $name, doubledName: $doubledName, isSubmitting: $isSubmitting, result: $result)';
+    return 'FormBlocState(name: $name, doubledName: $doubledName, applicationStatus: $applicationStatus, result: $result)';
   }
 
   @override
@@ -696,9 +713,9 @@ class _$_FormState implements _FormState {
             (identical(other.doubledName, doubledName) ||
                 const DeepCollectionEquality()
                     .equals(other.doubledName, doubledName)) &&
-            (identical(other.isSubmitting, isSubmitting) ||
+            (identical(other.applicationStatus, applicationStatus) ||
                 const DeepCollectionEquality()
-                    .equals(other.isSubmitting, isSubmitting)) &&
+                    .equals(other.applicationStatus, applicationStatus)) &&
             (identical(other.result, result) ||
                 const DeepCollectionEquality().equals(other.result, result)));
   }
@@ -708,7 +725,7 @@ class _$_FormState implements _FormState {
       runtimeType.hashCode ^
       const DeepCollectionEquality().hash(name) ^
       const DeepCollectionEquality().hash(doubledName) ^
-      const DeepCollectionEquality().hash(isSubmitting) ^
+      const DeepCollectionEquality().hash(applicationStatus) ^
       const DeepCollectionEquality().hash(result);
 
   @override
@@ -720,7 +737,7 @@ abstract class _FormState implements FormBlocState {
   const factory _FormState(
       {@required Name name,
       @required Name doubledName,
-      @required bool isSubmitting,
+      @required ApplicationStatus applicationStatus,
       @required Option<Either<BackendFailure, Unit>> result}) = _$_FormState;
 
   @override
@@ -728,7 +745,7 @@ abstract class _FormState implements FormBlocState {
   @override
   Name get doubledName;
   @override
-  bool get isSubmitting;
+  ApplicationStatus get applicationStatus;
   @override
   Option<Either<BackendFailure, Unit>> get result;
   @override

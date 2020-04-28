@@ -1,51 +1,36 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:web_form/application/core/application_status.dart';
 import 'package:web_form/application/form/form_bloc.dart';
+import 'package:web_form/domain/core/value_object.dart';
+import 'package:web_form/presentation/screens/core/text_field.dart';
 
-class NameField extends HookWidget {
+class NameTextField extends CoreTextField<FormBloc, FormBlocState> {
   @override
-  Widget build(BuildContext context) {
-    final TextEditingController fieldController = useTextEditingController();
-    final FocusNode _focusNode = useFocusNode();
+  String getLabelText(BuildContext context) => "Name";
 
-    return BlocConsumer<FormBloc, FormBlocState>(
-        listener: (context, state) {
-          fieldController.text = state.name.value.getOrElse(() => "");
-        },
-        listenWhen: (p, c) => !_focusNode.hasFocus && p.name != c.name,
-        buildWhen: (p, c) => p.name != c.name || p.result != c.result,
-        builder: (context, state) {
-          return TextFormField(
-              controller: fieldController,
-              decoration: const InputDecoration(
-                prefixIcon: Icon(Icons.person),
-                labelText: 'Name',
-                border: OutlineInputBorder(),
-              ),
-              autocorrect: false,
-              focusNode: _focusNode,
-              onChanged: (value) {
-                context.bloc<FormBloc>().add(FormBlocEvent.changeName(value));
-              },
-              validator: (_) => context.bloc<FormBloc>().state.name.value.fold(
-                    (f) => f.maybeMap(
-                      emptyString: (_) => 'Required field',
-                      lengthMax: (error) => 'Max length: ${error.length}',
-                      orElse: () => null,
-                    ),
-                    (_) => context.bloc<FormBloc>().state.result.fold(
-                          () => null,
-                          (a) => a.fold(
-                            (l) => l.maybeMap(
-                              nameInvalid: (_) =>
-                                  'Invalid name from the server',
-                              orElse: () => null,
-                            ),
-                            (r) => null,
-                          ),
-                        ),
-                  ));
-        });
+  @override
+  ValueObject<String> getValueObject(FormBlocState state) => state.name;
+
+  @override
+  ApplicationStatus getStatus(FormBlocState state) => state.applicationStatus;
+
+  @override
+  void onChanged(String value, FormBloc bloc) {
+    bloc.add(FormBlocEvent.changeName(value));
   }
+
+  @override
+  Icon prefixIcon() => const Icon(Icons.person);
+
+  @override
+  String getResultError(FormBlocState state) => state.result.fold(
+        () => null,
+        (a) => a.fold(
+          (l) => l.maybeMap(
+            nameInvalid: (_) => 'Invalid name from the server',
+            orElse: () => null,
+          ),
+          (r) => null,
+        ),
+      );
 }

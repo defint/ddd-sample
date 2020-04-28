@@ -4,6 +4,7 @@ import 'package:bloc/bloc.dart';
 import 'package:dartz/dartz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
+import 'package:web_form/application/core/application_status.dart';
 import 'package:web_form/domain/core/backend_failure.dart';
 import 'package:web_form/domain/counter/counter_value_objects.dart';
 import 'package:web_form/domain/counter/i_counter_service.dart';
@@ -46,15 +47,21 @@ class FormBloc extends Bloc<FormBlocEvent, FormBlocState> {
       },
       submit: (e) async* {
         yield state.copyWith(
-          isSubmitting: true,
+          applicationStatus: const ApplicationStatus.formValidating(),
           result: none(),
+        );
+
+        // TODO global validating
+
+        yield state.copyWith(
+          applicationStatus: const ApplicationStatus.formSubmitting(),
         );
         final result = await _counterService.submit(
           name: state.name,
           doubledName: state.doubledName,
         );
         yield state.copyWith(
-          isSubmitting: false,
+          applicationStatus: const ApplicationStatus.formSubmitted(),
           result: some(result),
         );
       },

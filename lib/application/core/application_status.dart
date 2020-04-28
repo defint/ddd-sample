@@ -6,4 +6,9 @@ part 'application_status.freezed.dart';
 abstract class ApplicationStatus with _$ApplicationStatus {
   const factory ApplicationStatus.normal() = Normal;
   const factory ApplicationStatus.loading() = Loading;
+
+  const factory ApplicationStatus.formInitial() = FormInitial;
+  const factory ApplicationStatus.formValidating() = FormValidating;
+  const factory ApplicationStatus.formSubmitting() = FormSubmitting;
+  const factory ApplicationStatus.formSubmitted() = FormSubmitted;
 }
