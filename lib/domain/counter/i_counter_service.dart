@@ -2,6 +2,7 @@ import 'package:dartz/dartz.dart';
 import 'package:flutter/material.dart';
 import 'package:web_form/domain/core/backend_failure.dart';
 import 'package:web_form/domain/counter/counter_value_objects.dart';
+import 'package:web_form/domain/form/form_value_objects.dart';
 
 abstract class ICounterService {
   Future<Counter> increment(Counter counter);

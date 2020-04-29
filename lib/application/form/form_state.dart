@@ -17,4 +17,7 @@ abstract class FormBlocState with _$FormBlocState {
         applicationStatus: ApplicationStatus.formInitial(),
         result: none(),
       );
+
+  static List<ValueObject> getValidatedFields(FormBlocState state) =>
+      [state.name, state.position, state.doubledName];
 }

@@ -51,14 +51,6 @@ class FormScreen extends StatelessWidget implements AutoRouteWrapper {
               Container(
                 height: 20,
               ),
-              RaisedButton(
-                onPressed: () {
-                  context
-                      .bloc<FormBloc>()
-                      .add(FormBlocEvent.initialized(initialValue));
-                },
-                child: const Text("RESET"),
-              ),
               BlocConsumer<FormBloc, FormBlocState>(
                   listener: (context, state) {
                     state.result.fold(
@@ -72,16 +64,40 @@ class FormScreen extends StatelessWidget implements AutoRouteWrapper {
                   buildWhen: (p, c) =>
                       p.applicationStatus != c.applicationStatus,
                   builder: (context, state) {
-                    return RaisedButton(
-                      onPressed: () {
-                        if (_formKey.currentState.validate()) {
-                          context.bloc<FormBloc>().add(FormBlocEvent.submit());
-                        }
-                      },
-                      child: state.applicationStatus ==
-                              const ApplicationStatus.formSubmitting()
-                          ? const Text('Submitting...')
-                          : const Text('SUBMIT'),
+                    return Column(
+                      children: [
+                        state.result.fold(
+                          () => null,
+                          (a) => a.fold(
+                            (l) => l.maybeMap(
+                                serverError: (_) =>
+                                    const Text("Internal server error"),
+                                orElse: () => null),
+                            (r) => null,
+                          ),
+                        ),
+                        RaisedButton(
+                          onPressed: () {
+                            context
+                                .bloc<FormBloc>()
+                                .add(FormBlocEvent.initialized(initialValue));
+                          },
+                          child: const Text("RESET"),
+                        ),
+                        RaisedButton(
+                          onPressed: () {
+                            if (_formKey.currentState.validate()) {
+                              context
+                                  .bloc<FormBloc>()
+                                  .add(FormBlocEvent.submit());
+                            }
+                          },
+                          child: state.applicationStatus ==
+                                  const ApplicationStatus.formSubmitting()
+                              ? const Text('Submitting...')
+                              : const Text('SUBMIT'),
+                        ),
+                      ].where((element) => element != null).toList(),
                     );
                   }),
             ],

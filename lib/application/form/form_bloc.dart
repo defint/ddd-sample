@@ -6,8 +6,10 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 import 'package:web_form/application/core/application_status.dart';
 import 'package:web_form/domain/core/backend_failure.dart';
+import 'package:web_form/domain/core/value_object.dart';
 import 'package:web_form/domain/counter/counter_value_objects.dart';
 import 'package:web_form/domain/counter/i_counter_service.dart';
+import 'package:web_form/domain/form/form_value_objects.dart';
 
 part 'form_bloc.freezed.dart';
 part 'form_event.dart';
@@ -28,6 +30,7 @@ class FormBloc extends Bloc<FormBlocEvent, FormBlocState> {
   ) async* {
     yield* event.map(
       initialized: (e) async* {
+        yield initialState;
         add(FormBlocEvent.changeName(
             e.counter.value.getOrElse(() => 0).toString()));
       },
@@ -77,7 +80,14 @@ class FormBloc extends Bloc<FormBlocEvent, FormBlocState> {
           result: none(),
         );
 
-        // TODO global validating
+        final hasInvalid = FormBlocState.getValidatedFields(state).firstWhere(
+          (element) => !element.isValid(),
+          orElse: () => null,
+        );
+
+        if (hasInvalid != null) {
+          return;
+        }
 
         yield state.copyWith(
           applicationStatus: const ApplicationStatus.formSubmitting(),
