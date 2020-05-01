@@ -43,14 +43,14 @@ class _SecondScreenPageState extends State<SecondScreenPage> {
             ),
             BlocBuilder<CounterBloc, CounterState>(
               builder: (context, state) {
-                return state.state.map(
+                return state.state.maybeMap(
                     normal: (_) => state.loadedCounter.value.fold(
                         (l) => Text("error"),
                         (r) => Text(
                               '$r',
                               style: Theme.of(context).textTheme.headline4,
                             )),
-                    loading: (_) => Text("LOADING..."));
+                    orElse: () => Text("LOADING..."));
               },
             ),
             BlocBuilder<CounterBloc, CounterState>(
